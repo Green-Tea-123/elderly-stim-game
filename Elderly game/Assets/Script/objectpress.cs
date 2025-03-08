@@ -20,6 +20,7 @@ public class objectpress : MonoBehaviour
             if (canBePress)
             {
                 gameObject.SetActive(false);
+                GameManager.instance.NoteHit();
             }
         }
     }
@@ -33,9 +34,11 @@ public class objectpress : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Activator")
+        if (collision.tag == "Activator" && gameObject.activeSelf)
         {
             canBePress = false;
+
+            GameManager.instance.NoteMiss();
         }
     }
 }
