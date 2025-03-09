@@ -17,7 +17,7 @@ public class beat : MonoBehaviour
     void Start()
     {
         beatTempo = beatTempo / 60f;
-        PositionIni("grybgrybgryb");
+        PositionIni(GameManager.instance.positioninitialization);
     }
 
     // Update is called once per frame

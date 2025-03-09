@@ -21,10 +21,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI hitnotext;
     public TextMeshProUGUI missnotext;
     public GameObject resultScreen;
+    public string positioninitialization = "byrggg";
     void Start()
     {
         instance = this;
-        totalnotes = FindObjectsOfType<objectpress>().Length;
+        totalnotes = this.positioninitialization.Length;
     }
     // Update is called once per frame
     void Update()
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (!music.isPlaying && !resultScreen.activeInHierarchy && !emergencyStop) { 
+            if ( hitno + missno == totalnotes && !resultScreen.activeInHierarchy && !emergencyStop) { 
             resultScreen.SetActive(true);
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
