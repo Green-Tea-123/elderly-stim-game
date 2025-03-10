@@ -21,10 +21,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI hitnotext;
     public TextMeshProUGUI missnotext;
     public GameObject resultScreen;
-    public string positioninitialization = "byrggg";
+    public string positioninitialization;
+
     void Start()
     {
         instance = this;
+        positioninitialization = "ggggg";
         totalnotes = this.positioninitialization.Length;
     }
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
             resultScreen.SetActive(true);
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
-        }
+            }
         }
     }
 
@@ -65,12 +67,17 @@ public class GameManager : MonoBehaviour
         Score += ScorePernote;
         hitno += 1;
         scoretext.text = "score: " + Score;
+        if (!music.isPlaying)
+        {
+            music.UnPause();
+        }
     }
 
     public void NoteMiss()
     {
         Score -= ScorePernote;
-        missno -= 1;
+        missno += 1;
         scoretext.text = "score: " + Score;
+        music.Pause();
     }
 }

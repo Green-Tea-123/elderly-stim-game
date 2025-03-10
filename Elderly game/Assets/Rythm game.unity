@@ -3237,7 +3237,7 @@ Transform:
   m_GameObject: {fileID: 244095542}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: -0.32, z: -0.03986089}
+  m_LocalPosition: {x: 6.29, y: -0.41, z: -0.03986089}
   m_LocalScale: {x: 1.8115, y: 1.8115, z: 1.8115}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23170,7 +23170,7 @@ MonoBehaviour:
   hitnotext: {fileID: 2033295029}
   missnotext: {fileID: 1572761408}
   resultScreen: {fileID: 195166064}
-  positioninitialization: byrggg
+  positioninitialization: grybgryb
 --- !u!1 &1534971153
 GameObject:
   m_ObjectHideFlags: 0
