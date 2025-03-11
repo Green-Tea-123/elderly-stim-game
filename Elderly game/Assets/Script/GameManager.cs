@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        positioninitialization = "ggggg";
         totalnotes = this.positioninitialization.Length;
     }
     // Update is called once per frame
@@ -80,4 +80,9 @@ public class GameManager : MonoBehaviour
         scoretext.text = "score: " + Score;
         music.Pause();
     }
+
+    public void ResetTheGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }
