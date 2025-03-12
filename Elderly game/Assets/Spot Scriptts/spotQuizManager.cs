@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class QuizManager : MonoBehaviour
+public class spotQuizManager : MonoBehaviour
 {
-    public List<QuestionsAndAnswers> QnA;
+    public List<spotQuestionsAndAnswers> QnA;
     public GameObject[] options;
     public int currentQuestion;
-    public Text QuestionTxt;
+    public UnityEngine.UI.Image QuestionTxt;
 
     private void Start()
     {
@@ -28,12 +28,12 @@ public class QuizManager : MonoBehaviour
     {
         for (int i = 0; i < options.Length; i++)
         {
-            options[i].GetComponent<AnswerScript>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = QnA[currentQuestion].Answers[i];
+            options[i].GetComponent<spotAnswerScript>().isCorrect = false;
+            options[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = QnA[currentQuestion].Answers[i];
 
             if (QnA[currentQuestion].CorrectAnswer == i + 1)
             {
-                options[i].GetComponent<AnswerScript>().isCorrect = true;
+                options[i].GetComponent<spotAnswerScript>().isCorrect = true;
             }
 
         }
@@ -43,7 +43,7 @@ public class QuizManager : MonoBehaviour
     void generateQuestion() 
     {
         currentQuestion = Random.Range(0, QnA.Count);
-        QuestionTxt.text = QnA[currentQuestion].Question;
+        QuestionTxt.sprite = QnA[currentQuestion].Question;
         SetAnswers();
 
         
