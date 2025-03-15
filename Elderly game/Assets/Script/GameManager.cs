@@ -8,27 +8,49 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject coverpage;
     public AudioSource music;
     public bool Started;
     public beat bs;
     public static GameManager instance;
+    public bool emergencyStop;
+
+    [Header("In game Score")]
+    public TextMeshProUGUI scoretext;
     public float Score;
     public float ScorePernote = 1;
-    public TextMeshProUGUI scoretext;
-    public bool emergencyStop;
+
+
+    [Header("Scoring panel setting ")]
     public float totalnotes;
     public float hitno;
     public float missno;
     public TextMeshProUGUI hitnotext;
     public TextMeshProUGUI missnotext;
     public GameObject resultScreen;
-    public string positioninitialization;
+ 
+
+
+    [Header("TileMap setting ")]
+    public GameObject tile;
+    public GameObject RedFinal;
+    public GameObject YellowFinal;
+    public GameObject BlueFinal;
+    public GameObject GreenFinal;
+    public string positioninitialization = "yybg";
+
+    private void Awake()
+    {
+        instance = this;
+
+    }
 
     void Start()
     {
-        instance = this;
-        totalnotes = this.positioninitialization.Length;
+
+        totalnotes = this.CountNoChild(tile);
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -43,19 +65,18 @@ public class GameManager : MonoBehaviour
             else { Time.timeScale = 1; music.UnPause(); }
         }
 
-        if (!Started)
+        if (!Started & !coverpage.activeInHierarchy)
         {
             if (Input.anyKeyDown)
             {
                 Started = true;
                 bs.hasStart = true;
-
                 music.Play();
             }
         }
         else
         {
-            if ( hitno + missno == totalnotes && !resultScreen.activeInHierarchy && !emergencyStop) { 
+            if ( hitno + missno == totalnotes && !resultScreen.activeInHierarchy && !emergencyStop && !coverpage.activeSelf) { 
             resultScreen.SetActive(true);
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
@@ -81,8 +102,139 @@ public class GameManager : MonoBehaviour
         music.Pause();
     }
 
-    public void ResetTheGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void UpdatetheTile(string a) {
+        for (int i = 0; i < this.tile.transform.childCount; i++)
+        {
+            this.tile.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        this.positioninitialization = a;
+
+        for (int i = 0; i < a.Length +1; i++)
+        {
+            this.tile.transform.GetChild(i).gameObject.SetActive(true);
+        }
+
+        PositionIni(a);
+        Start();
     }
 
+    public void PositionIni(string a)
+    {
+        string b = a.ToUpper();
+        int alength = a.Length;
+        for (int i = 0; i < alength ; i++)
+        {
+            char c = b[i];
+            if (c == 'R')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("red").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+            if (c == 'B')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("blue").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+
+            if (c == 'Y')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("yellow").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+            if (c == 'G')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("green").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+            if (c == 'F')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("red").gameObject;
+                GameObject actualbutton2 = buttonz.transform.Find("blue").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton2.SetActive(true);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y - 4 - (1) * 4, -0);
+                actualbutton2.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+            if (c == 'D')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("red").gameObject;
+                GameObject actualbutton2 = buttonz.transform.Find("yellow").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton2.SetActive(true);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y - 4 - (1) * 4, -0);
+                actualbutton2.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+                if (c == 'S')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("red").gameObject;
+                GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton2.SetActive(true);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y - 4 - (1) * 4, -0);
+                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+
+            if (c == 'H')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("blue").gameObject;
+                GameObject actualbutton2 = buttonz.transform.Find("yellow").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton2.SetActive(true);
+                actualbutton2.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y - 4 - (1) * 4, -0);
+                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+
+            if (c == 'J')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("blue").gameObject;
+                GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton2.SetActive(true);
+                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y - 4 - (1) * 4, -0);
+                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+            if (c == 'K')
+            {
+                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                GameObject actualbutton = buttonz.transform.Find("yellow").gameObject;
+                GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
+                actualbutton.SetActive(true);
+                actualbutton2.SetActive(true);
+                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y - 4 - (1) * 4, -0);
+                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y - 4 - (1) * 4, -0);
+            }
+        }
+    }
+    int CountNoChild(GameObject a)
+    {
+        int Noactive = this.positioninitialization.Length;
+        int NoNote = 0;
+
+        for (int i = 0; i < Noactive; i++)
+        {
+            foreach (Transform child in a.transform.GetChild(i))
+            {
+                if (child.gameObject.activeSelf)
+                {
+                    NoNote++;
+                }
+            }
+
+        }
+        return NoNote;
+    }
 }

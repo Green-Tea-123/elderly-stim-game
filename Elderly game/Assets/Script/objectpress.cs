@@ -41,4 +41,6 @@ public class objectpress : MonoBehaviour
             GameManager.instance.NoteMiss();
         }
     }
+
+    
 }
