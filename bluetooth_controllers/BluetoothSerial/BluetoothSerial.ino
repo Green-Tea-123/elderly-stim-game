@@ -55,6 +55,7 @@ void loop() {
         if (millis() - lastDebounceTime1 > debounceDelay) {
             lastDebounceTime1 = millis();
             SerialBT.println('1');
+            Serial.println('1');
         }
         button1Flag = false;
     }
