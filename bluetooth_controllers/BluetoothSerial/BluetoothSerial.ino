@@ -15,6 +15,23 @@ BluetoothSerial SerialBT;
 #define BUTTON_3 26
 #define BUTTON_4 25
 
+volatile bool button1Flag = false;
+volatile bool button2Flag = false;
+volatile bool button3Flag = false;
+volatile bool button4Flag = false;
+
+unsigned long lastDebounceTime1 = 0;
+unsigned long lastDebounceTime2 = 0;
+unsigned long lastDebounceTime3 = 0;
+unsigned long lastDebounceTime4 = 0;
+const unsigned long debounceDelay = 200;
+
+
+void IRAM_ATTR button1_ISR() { button1Flag = true; }
+void IRAM_ATTR button2_ISR() { button2Flag = true; }
+void IRAM_ATTR button3_ISR() { button3Flag = true; }
+void IRAM_ATTR button4_ISR() { button4Flag = true; }
+
 void setup() {
     Serial.begin(115200);
     SerialBT.begin("ESP32_Controller_1"); 
@@ -24,19 +41,45 @@ void setup() {
     pinMode(BUTTON_2, INPUT_PULLUP);
     pinMode(BUTTON_3, INPUT_PULLUP);
     pinMode(BUTTON_4, INPUT_PULLUP);
+
+    attachInterrupt(digitalPinToInterrupt(BUTTON_1), button1_ISR, FALLING);
+    attachInterrupt(digitalPinToInterrupt(BUTTON_2), button2_ISR, FALLING);
+    attachInterrupt(digitalPinToInterrupt(BUTTON_3), button3_ISR, FALLING);
+    attachInterrupt(digitalPinToInterrupt(BUTTON_4), button4_ISR, FALLING);
 }
 
 void loop() {
     String message = "";
 
-    if (digitalRead(BUTTON_1) == LOW) message += "B1,";
-    if (digitalRead(BUTTON_2) == LOW) message += "B2,";
-    if (digitalRead(BUTTON_3) == LOW) message += "B3,";
-    if (digitalRead(BUTTON_4) == LOW) message += "B4,";
-
-    if (message.length() > 0) {
-        SerialBT.println(message);
+    if (button1Flag) {
+        if (millis() - lastDebounceTime1 > debounceDelay) {
+            lastDebounceTime1 = millis();
+            SerialBT.println('1');
+        }
+        button1Flag = false;
     }
 
-    delay(100); 
+    if (button2Flag) {
+        if (millis() - lastDebounceTime2 > debounceDelay) {
+            lastDebounceTime2 = millis();
+            SerialBT.println('2');
+        }
+        button2Flag = false;
+    }
+
+    if (button3Flag) {
+        if (millis() - lastDebounceTime3 > debounceDelay) {
+            lastDebounceTime3 = millis();
+            SerialBT.println('3');
+        }
+        button3Flag = false;
+    }
+
+    if (button4Flag) {
+        if (millis() - lastDebounceTime4 > debounceDelay) {
+            lastDebounceTime4 = millis();
+            SerialBT.println('4');
+        }
+        button4Flag = false;
+    }
 }

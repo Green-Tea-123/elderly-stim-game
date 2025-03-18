@@ -9,7 +9,7 @@ public class BluetoothManager : MonoBehaviour {
 
     private string deviceName;
     void Start() {
-        this.deviceName = "HC-06";
+        this.deviceName = "ESP32_Controller_1";
         try {
             bluetoothHelper = BluetoothHelper.GetInstance(deviceName);
             bluetoothHelper.OnConnected += OnConnected;
@@ -29,12 +29,13 @@ public class BluetoothManager : MonoBehaviour {
     }
 
     private void OnConnectionFailed(BluetoothHelper bluetoothHelper) {
-
+        Debug.Log("Bluetooth Connection Failed");
     }
 
     void Update() {
         if (bluetoothHelper.Available) {
             string msg = bluetoothHelper.Read();
+            Debug.Log(msg);
         }
     }
 
