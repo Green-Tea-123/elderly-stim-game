@@ -5,9 +5,20 @@ using ArduinoBluetoothAPI;
 
 public class BluetoothManager : MonoBehaviour {
 
+    public static BluetoothManager instance;
+
     private BluetoothHelper bluetoothHelper;
 
     private string deviceName;
+
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+        } else if (instance != this) {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+    }
     void Start() {
         this.deviceName = "ESP32_Controller_1";
         try {
@@ -37,6 +48,15 @@ public class BluetoothManager : MonoBehaviour {
             string msg = bluetoothHelper.Read();
             Debug.Log(msg);
         }
+    }
+
+    // TODO modify to return controller identity and input
+    public string checkForMessage() {
+        if (bluetoothHelper.Available) {
+            string msg = bluetoothHelper.Read();
+            return msg;
+        }
+        return null;
     }
 
     void CloseConnection() {
