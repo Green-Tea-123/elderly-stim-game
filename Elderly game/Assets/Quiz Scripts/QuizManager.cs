@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 
 public class QuizManager : MonoBehaviour
 {
+    public static QuizManager instance;
     public List<QuestionsAndAnswers> QnA = QuestionBank.generateQuestions();
     public GameObject[] options;
     public int currentQuestion;
@@ -18,6 +19,10 @@ public class QuizManager : MonoBehaviour
     public float currentTime;
     public int timelimit = 30;
     private bool gamestatus = false;
+
+    private void Awake() {
+        instance = this;
+    }
     private void Start()
     {
         generateQuestion();
@@ -50,12 +55,12 @@ public class QuizManager : MonoBehaviour
     {
         for (int i = 0; i < options.Length; i++)
         {
-            options[i].GetComponent<AnswerScript>().isCorrect = false;
+            options[i].GetComponent<Option>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = QnA[currentQuestion].Answers[i];
 
             if (QnA[currentQuestion].CorrectAnswer == i + 1)
             {
-                options[i].GetComponent<AnswerScript>().isCorrect = true;
+                options[i].GetComponent<Option>().isCorrect = true;
             }
 
         }
