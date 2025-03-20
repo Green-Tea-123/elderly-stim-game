@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -11,16 +13,20 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public int currentQuestion;
     public Text QuestionTxt;
+    public Text TimerTxt;
     public int score = 0;
-
+    public float currentTime;
+    public int timelimit = 30;
+    private bool gamestatus = false;
     private void Start()
     {
-
         generateQuestion();
+        gamestatus = true;
     }
 
     public void correct()
     {
+        gamestatus = false;
         score++;
         QnA.RemoveAt(currentQuestion);
         if (QnA.Count > 0) {
@@ -31,6 +37,7 @@ public class QuizManager : MonoBehaviour
     }
 
     public void wrong() {
+        gamestatus = false;
         QnA.RemoveAt(currentQuestion);
         if (QnA.Count > 0) {
             generateQuestion();
@@ -54,12 +61,42 @@ public class QuizManager : MonoBehaviour
         }
 
     }
+    private void SetTimer(float value)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(value);
+        TimerTxt.text = "Time:" + time.ToString("ss");
 
+        if (currentTime <= 0)
+        {
+            if (QnA.Count > 0)
+            {
+                generateQuestion();
+            }
+            else
+            {
+                endQuiz();
+            }
+        }
+    }
     void generateQuestion() 
     {
-        currentQuestion = Random.Range(0, QnA.Count);
+        gamestatus = true;
+        currentTime = timelimit;
+        currentQuestion = UnityEngine.Random.Range(0, QnA.Count);
         QuestionTxt.text = QnA[currentQuestion].Question;
         SetAnswers();
+        SetTimer(currentTime);
+ 
+       
+    }
+
+    private void Update()
+    {
+        if(gamestatus == true)
+        {
+            currentTime -= Time.deltaTime;
+            SetTimer(currentTime);
+        }
     }
 
     void endQuiz() {
