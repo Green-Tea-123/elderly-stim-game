@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     public GameObject GreenFinal;
     public string positioninitialization = "yybg";
 
+    public static string blueToothMsg = null;
+
     private void Awake()
     {
         instance = this;
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //blueToothMsg = InputManager.instance.getKeyDown();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             emergencyStop = !emergencyStop;
@@ -67,7 +70,7 @@ public class GameManager : MonoBehaviour
 
         if (!Started & !coverpage.activeInHierarchy)
         {
-            if (Input.anyKeyDown)
+            if (Input.anyKeyDown || blueToothMsg != null)
             {
                 Started = true;
                 bs.hasStart = true;
