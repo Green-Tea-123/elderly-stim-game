@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject coverpage;
     public AudioSource music;
+    public AudioSource scoremusic;
     public bool Started;
     public beat bs;
     public static GameManager instance;
     public bool emergencyStop;
-
+    public float framerate = 60f;
     [Header("In game Score")]
     public TextMeshProUGUI scoretext;
     public float Score;
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
         Score += ScorePernote;
         hitno += 1;
         scoretext.text = "score: " + Score;
+        scoremusic.Play();
         if (!music.isPlaying)
         {
             music.UnPause();
@@ -120,6 +122,15 @@ public class GameManager : MonoBehaviour
 
         PositionIni(a);
         Start();
+    }
+
+    public void Updatedifficulty(string difficulty)
+    {
+        string difficultysetting = difficulty;
+        Debug.Log(difficultysetting);
+        this.framerate = float.Parse(difficultysetting);
+        Start();
+
     }
 
     public void PositionIni(string positionString)

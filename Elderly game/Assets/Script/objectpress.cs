@@ -6,6 +6,7 @@ public class objectpress : MonoBehaviour
 {
     public bool canBePress;
     public KeyCode keyTopress;
+    public GameObject hiteffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class objectpress : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 GameManager.instance.NoteHit();
+                Instantiate(hiteffect, new Vector3(this.transform.position.x,this.transform.position.y),hiteffect.transform.rotation);
             }
         }
     }

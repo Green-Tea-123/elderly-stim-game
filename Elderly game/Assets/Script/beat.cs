@@ -14,9 +14,9 @@ public class beat : MonoBehaviour
     public GameObject GreenFinal;
 
 
-    void Start()
+    public void Start()
     {
-        beatTempo = beatTempo / 60f;
+        beatTempo = beatTempo / GameManager.instance.framerate;
     }
 
     // Update is called once per frame
@@ -35,5 +35,14 @@ public class beat : MonoBehaviour
         }
     }
 
-  
+    public void Updatedifficulty(string difficulty)
+    {
+        string difficultysetting = difficulty;
+        Debug.Log(difficultysetting);
+        GameManager.instance.framerate = float.Parse(difficultysetting);
+        Start();
+
+    }
+
+
 }
