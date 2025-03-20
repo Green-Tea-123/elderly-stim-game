@@ -43,17 +43,11 @@ public class BluetoothManager : MonoBehaviour {
         Debug.Log("Bluetooth Connection Failed");
     }
 
-    void Update() {
-        if (bluetoothHelper.Available) {
-            string msg = bluetoothHelper.Read();
-            Debug.Log(msg);
-        }
-    }
-
     // TODO modify to return controller identity and input
     public string checkForMessage() {
-        if (bluetoothHelper.Available) {
+        if (bluetoothHelper != null && bluetoothHelper.Available) {
             string msg = bluetoothHelper.Read();
+            Debug.Log(msg);
             return msg;
         }
         return null;
