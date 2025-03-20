@@ -9,6 +9,9 @@ public class buttoncontroller : MonoBehaviour
     public Sprite defaultImage;
     public Sprite pressedImage;
     public KeyCode KeyToPress;
+
+    public string Bluetoothmsg;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +21,12 @@ public class buttoncontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyToPress))
+        if (Input.GetKeyDown(KeyToPress) || GameManager.blueToothMsg == Bluetoothmsg)
         {
             SR.sprite = pressedImage;
         }
 
-        if(Input.GetKeyUp(KeyToPress))
+        if(Input.GetKeyUp(KeyToPress) || GameManager.blueToothMsg == null)
         {
             SR.sprite = defaultImage;
         }
