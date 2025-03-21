@@ -14,7 +14,7 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public int currentQuestion;
     public Text QuestionTxt;
-    public Text TimerTxt;
+    public TextMeshProUGUI TimerTxt;
     public int score = 0;
     public float currentTime;
     public int timelimit = 30;
