@@ -26,9 +26,10 @@ public class buttoncontroller : MonoBehaviour
             SR.sprite = pressedImage;
         }
 
-        if(Input.GetKeyUp(KeyToPress) || GameManager.blueToothMsg == null)
+        if(Input.GetKeyUp(KeyToPress))
         {
             SR.sprite = defaultImage;
         }
+
     }
 }

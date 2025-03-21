@@ -7,6 +7,8 @@ public class objectpress : MonoBehaviour
     public bool canBePress;
     public KeyCode keyTopress;
     public GameObject hiteffect;
+
+    public string targetBlutTooth;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,7 @@ public class objectpress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(keyTopress))
+        if(Input.GetKeyDown(keyTopress) || GameManager.blueToothMsg == targetBlutTooth)
         {
             if (canBePress)
             {
