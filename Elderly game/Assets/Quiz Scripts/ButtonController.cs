@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour {
     public GameObject[] options;
@@ -15,9 +16,13 @@ public class ButtonController : MonoBehaviour {
 
             int inputIndex = Int32.Parse(input) - 1;
             if (options[inputIndex].GetComponent<Option>().isCorrect) {
+                
                 QuizManager.instance.correct();
+          
             } else {
+      
                 QuizManager.instance.wrong();
+       
             }
 
         } else {
@@ -25,6 +30,7 @@ public class ButtonController : MonoBehaviour {
             // redundancy code for keyboard keys
             if (Input.GetKeyDown(KeyCode.W)) {
                 inputIndex = 0;
+                
             } else if (Input.GetKeyDown(KeyCode.E)) {
                 inputIndex = 1;
             } else if (Input.GetKeyDown(KeyCode.S)) {
@@ -36,6 +42,7 @@ public class ButtonController : MonoBehaviour {
             }
 
             if (options[inputIndex].GetComponent<Option>().isCorrect) {
+             
                 QuizManager.instance.correct();
             } else {
                 QuizManager.instance.wrong();

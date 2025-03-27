@@ -31,6 +31,7 @@ public class QuizManager : MonoBehaviour
 
     public void correct()
     {
+
         gamestatus = false;
         score++;
         QnA.RemoveAt(currentQuestion);
