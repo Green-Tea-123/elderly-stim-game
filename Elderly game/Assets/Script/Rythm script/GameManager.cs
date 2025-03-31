@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool emergencyStop;
     public float framerate = 60f;
+    public int lvlNo;
     [Header("In game Score")]
     public TextMeshProUGUI scoretext;
     public float Score;
@@ -40,8 +41,27 @@ public class GameManager : MonoBehaviour
     public GameObject GreenFinal;
     public string positioninitialization = "yybg";
 
+
+    [Header("Game Pause setting ")]
+    public GameObject pausePage;
+
     public static string blueToothMsg = null;
 
+
+    public static Dictionary<string, string> lvlinfo = new Dictionary<string, string>(){
+    {"1", "gggbbbggrrggbbbggf"},
+    {"2", "rrrbbggjjkj"},
+    {"3", "jjjkkkbbbbrrrrr"},
+    {"4", "rrrrjjjjjjjkkkk"},
+    {"5", "rrrbbbjjjyyyy"},
+    {"6", "yyyyyyyyyy"},
+    {"7", "bbbbbbbbb"},
+    {"8", "yyyyyyy"},
+    {"9", "bbbbbbb"},
+    {"10", "yyyrrrr"},
+    {"11", "bbjjkk"},
+    {"12", "jjjjjjjjjjjjj"}
+    };
     private void Awake()
     {
         instance = this;
@@ -52,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
 
         totalnotes = this.CountNoChild(tile);
+        this.lvlNo = 0;
     }
 
     // Update is called once per frame
@@ -65,8 +86,9 @@ public class GameManager : MonoBehaviour
             {
                 music.Pause();
                 Time.timeScale = 0;
+                pausePage.SetActive(true);
             }
-            else { Time.timeScale = 1; music.UnPause(); }
+            else { Time.timeScale = 1; music.UnPause(); pausePage.SetActive(false); }
         }
 
         if (!Started & !coverpage.activeInHierarchy)
@@ -86,6 +108,13 @@ public class GameManager : MonoBehaviour
             missnotext.text = "" + missno;
             }
         }
+    }
+    public void gameResume()
+    {
+
+        emergencyStop = !emergencyStop;
+        Time.timeScale = 1; music.UnPause();
+        pausePage.SetActive(false);
     }
 
     public void NoteHit() {
@@ -145,14 +174,14 @@ public class GameManager : MonoBehaviour
                 GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("red").gameObject;
                 actualbutton.SetActive(true);
-                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);
             }
             if (c == 'B')
             {
                 GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("blue").gameObject;
                 actualbutton.SetActive(true);
-                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);
             }
 
             if (c == 'Y')
@@ -160,14 +189,14 @@ public class GameManager : MonoBehaviour
                 GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("yellow").gameObject;
                 actualbutton.SetActive(true);
-                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
             }
             if (c == 'G')
             {
                 GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("green").gameObject;
                 actualbutton.SetActive(true);
-                actualbutton.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
             }
             if (c == 'F')
             {
@@ -176,8 +205,8 @@ public class GameManager : MonoBehaviour
                 GameObject actualbutton2 = buttonz.transform.Find("blue").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
-                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y - 4 - (i) * 4, -0);
-                actualbutton2.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton2.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);
             }
             if (c == 'D')
             {
@@ -186,8 +215,8 @@ public class GameManager : MonoBehaviour
                 GameObject actualbutton2 = buttonz.transform.Find("yellow").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
-                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y - 4 - (i) * 4, -0);
-                actualbutton2.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton2.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
             }
                 if (c == 'S')
             {
@@ -196,8 +225,8 @@ public class GameManager : MonoBehaviour
                 GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
-                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y - 4 - (i) * 4, -0);
-                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
             }
 
             if (c == 'H')
@@ -207,8 +236,8 @@ public class GameManager : MonoBehaviour
                 GameObject actualbutton2 = buttonz.transform.Find("yellow").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
-                actualbutton2.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y - 4 - (i) * 4, -0);
-                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton2.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);
             }
 
             if (c == 'J')
@@ -218,8 +247,8 @@ public class GameManager : MonoBehaviour
                 GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
-                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y - 4 - (i) * 4, -0);
-                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);
             }
             if (c == 'K')
             {
@@ -228,11 +257,17 @@ public class GameManager : MonoBehaviour
                 GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
-                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y - 4 - (i) * 4, -0);
-                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y - 4 - (i) * 4, -0);
+                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
             }
         }
     }
+
+    public void updateLvl(int lvl)
+    {
+        this.lvlNo = lvl;
+    }
+
     int CountNoChild(GameObject a)
     {
         int Noactive = this.positioninitialization.Length;
