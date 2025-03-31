@@ -16,7 +16,7 @@ public class RythmGameLvlSelection : MonoBehaviour
     {
 
         GameManager.instance.updateLvl(int.Parse(textz.text));
-        GameManager.instance.PositionIni(GameManager.lvlinfo[textz.text]);
+        GameManager.instance.UpdatetheTile(GameManager.lvlinfo[textz.text]);
         initializePage.SetActive(false);
     }
 

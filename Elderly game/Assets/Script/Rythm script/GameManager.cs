@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
     {
 
         totalnotes = this.CountNoChild(tile);
-        this.lvlNo = 0;
     }
 
     // Update is called once per frame
