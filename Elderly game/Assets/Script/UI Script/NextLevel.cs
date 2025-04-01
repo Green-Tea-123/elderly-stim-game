@@ -14,9 +14,9 @@ public class NextLevel : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
         frontPage.SetActive(false);
-        GameManager.instance.UpdatetheTile(GameManager.lvlinfo[LibraryNo.instance.getNextStageNo().toString()]);
+        GameManager.instance.UpdatetheTile(GameManager.lvlinfo[LibraryNo.instance.getNextStageNo().ToString()]);
 
-        GameManager.instance.updateLvl(nxtLvlNoint);
+        GameManager.instance.updateLvl(LibraryNo.instance.getNextStageNo());
     }
 
 }

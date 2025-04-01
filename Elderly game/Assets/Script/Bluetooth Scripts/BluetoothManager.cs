@@ -28,6 +28,7 @@ public class BluetoothManager : MonoBehaviour {
             bluetoothHelper.setTerminatorBasedStream("\n");
             if (bluetoothHelper.isDevicePaired()) {
                 bluetoothHelper.Connect();
+                Debug.Log("Bluetooth connected");
             }
             
         } catch (System.Exception e) {
