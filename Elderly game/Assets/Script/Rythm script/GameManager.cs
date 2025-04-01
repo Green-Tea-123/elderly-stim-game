@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,8 +50,8 @@ public class GameManager : MonoBehaviour
 
 
     public static Dictionary<string, string> lvlinfo = new Dictionary<string, string>(){
-    {"1", "gggbbbggrrggbbbggf"},
-    {"2", "rrrbbggjjkj"},
+    {"1", "r"},
+    {"2", "rr"},
     {"3", "jjjkkkbbbbrrrrr"},
     {"4", "rrrrjjjjjjjkkkk"},
     {"5", "rrrbbbjjjyyyy"},
@@ -116,6 +117,11 @@ public class GameManager : MonoBehaviour
         pausePage.SetActive(false);
     }
 
+    public void resetGameValue()
+    {
+        hitno = 0;
+        missno = 0;
+    }
     public void NoteHit() {
         Score += ScorePernote;
         hitno += 1;
@@ -127,6 +133,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+   
     public void NoteMiss()
     {
         Score -= ScorePernote;
