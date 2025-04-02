@@ -18,7 +18,7 @@ public class objectpress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(keyTopress) || GameManager.staticBlueToothMsg == targetBlutTooth)
+        /*if(Input.GetKeyDown(keyTopress) || GameManager.staticBlueToothMsg == targetBlutTooth)
         {
             if (canBePress)
             {
@@ -26,13 +26,26 @@ public class objectpress : MonoBehaviour
                 GameManager.instance.NoteHit();
                 Instantiate(hiteffect, new Vector3(this.transform.position.x,this.transform.position.y),hiteffect.transform.rotation);
             }
-        }
+        }*/
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Activator")
         {
-            canBePress = true;
+            if (gameObject.name.Substring(0,1) == "r") {
+              GameManager.instance.updateRed(true, gameObject.name,gameObject);
+            }
+            else if(gameObject.name.Substring(0, 1) == "g")
+            {
+                GameManager.instance.updateGreen(true, gameObject.name,gameObject);
+            }else if(gameObject.name.Substring(0, 1) == "y")
+            {
+                GameManager.instance.updateYellow(true, gameObject.name, gameObject);
+            }else if(gameObject.name.Substring(0, 1) == "b")
+            {
+                GameManager.instance.updateBlue(true, gameObject.name, gameObject);
+            }
+
         }
     }
 
@@ -40,11 +53,38 @@ public class objectpress : MonoBehaviour
     {
         if (collision.tag == "Activator" && gameObject.activeSelf)
         {
-            canBePress = false;
+
+            if (gameObject.name == "red")
+            {
+                GameManager.instance.updateRed(false, "empty",null);
+            }
+            else if (gameObject.name == "green")
+            {
+                GameManager.instance.updateGreen(false, "empty",null);
+            }
+            else if (gameObject.name == "yellow")
+            {
+                GameManager.instance.updateYellow(false, "empty", null);
+            }
+            else if (gameObject.name == "blue")
+            {
+                GameManager.instance.updateBlue(false, "empty", null);
+            }
 
             GameManager.instance.NoteMiss();
         }
     }
 
-    
+    public void objectDisappear()
+    {
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+            GameManager.instance.NoteHit();
+            Instantiate(hiteffect, new Vector3(this.transform.position.x, this.transform.position.y), hiteffect.transform.rotation);
+        } else
+        {
+
+        }
+    }
 }

@@ -54,7 +54,26 @@ public class GameManager : MonoBehaviour
 
     public static string staticBlueToothMsg = null;
 
+    [Header("tilereceiver setting ")]
+    public bool redCanBePressed;
+    public string redName = "empty";
+    public bool blueCanBePressed;
+    public string blueName = "empty";
+    public bool greenCanBePressed;
+    public string greenName = "empty";
+    public bool yellowCanBePressed;
+    public string yellowName = "empty";
+    public GameObject redToDis;
+    public GameObject greenToDis;
+    public GameObject yellowToDis;
+    public GameObject blueToDis;
 
+
+    [Header("Sprite setting ")]
+    public GameObject redSprite;
+    public GameObject greenSprite;
+    public GameObject blueSprite;
+    public GameObject yellowSprite;
     public static Dictionary<string, string> lvlinfo = new Dictionary<string, string>(){
     {"1", "RBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYG"},
     {"2", "RSBYHGRBYGSBYHGRBYGRSBYHGRBYGRBYRSBYHGRBYGSBYHGRBYGRSBYHGRBYGRBY"},
@@ -197,6 +216,34 @@ public class GameManager : MonoBehaviour
                     YellowFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[3];
                 }
             }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (redCanBePressed)
+                {
+                    redToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (greenCanBePressed)
+                {
+                    greenToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                if (blueCanBePressed)
+                {
+                    blueToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (yellowCanBePressed)
+                {
+                    yellowToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                }
+            }
         }
 
         if (isCoop && Time.time % 20 == 0) {
@@ -237,7 +284,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdatetheTile(string a) {
-        for (int i = 0; i < this.tile.transform.childCount; i++)
+        /*for (int i = 0; i < this.tile.transform.childCount; i++)
         {
             this.tile.transform.GetChild(i).gameObject.SetActive(false);
         }
@@ -247,7 +294,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < a.Length +1; i++)
         {
             this.tile.transform.GetChild(i).gameObject.SetActive(true);
-        }
+        }*/
 
         PositionIni(a);
         Start();
@@ -271,55 +318,76 @@ public class GameManager : MonoBehaviour
             char c = b[i];
             if (c == 'R')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                /*GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("red").gameObject;
                 actualbutton.SetActive(true);
-                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);*/
+                GameObject redtile = Instantiate(redSprite, new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0), redSprite.transform.rotation);
+                redtile.transform.SetParent(this.tile.transform);
+
             }
             if (c == 'B')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                /*GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("blue").gameObject;
                 actualbutton.SetActive(true);
-                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);*/
+                GameObject bluetile = Instantiate(blueSprite, new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0), blueSprite.transform.rotation);
+                bluetile.transform.SetParent(this.tile.transform);
             }
 
             if (c == 'Y')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                /*GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("yellow").gameObject;
                 actualbutton.SetActive(true);
-                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);*/
+                GameObject yellowtile = Instantiate(yellowSprite, new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0), yellowSprite.transform.rotation);
+                yellowtile.transform.SetParent(this.tile.transform);
             }
             if (c == 'G')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
-                GameObject actualbutton = buttonz.transform.Find("green").gameObject;
-                actualbutton.SetActive(true);
-                actualbutton.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
+            /*GameObject buttonz = tile.transform.GetChild(i).gameObject;
+            GameObject actualbutton = buttonz.transform.Find("green").gameObject;
+            actualbutton.SetActive(true);
+            actualbutton.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);*/
+            GameObject greentile = Instantiate(greenSprite, new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0), greenSprite.transform.rotation);
+            greentile.transform.SetParent(this.tile.transform);
             }
             if (c == 'F')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                /*GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("red").gameObject;
                 GameObject actualbutton2 = buttonz.transform.Find("blue").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
                 actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);
-                actualbutton2.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);
+                actualbutton2.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);*/
+                GameObject redtile = Instantiate(redSprite, new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0), redSprite.transform.rotation);
+                redtile.transform.SetParent(this.tile.transform);
+                GameObject bluetile = Instantiate(blueSprite, new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0), blueSprite.transform.rotation);
+                bluetile.transform.SetParent(this.tile.transform);
+
             }
             if (c == 'D')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                /*GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("red").gameObject;
                 GameObject actualbutton2 = buttonz.transform.Find("yellow").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
                 actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);
                 actualbutton2.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
+            */
+                GameObject redtile = Instantiate(redSprite, new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0), redSprite.transform.rotation);
+                redtile.transform.SetParent(this.tile.transform);
+                GameObject yellowtile = Instantiate(yellowSprite, new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0), yellowSprite.transform.rotation);
+                yellowtile.transform.SetParent(this.tile.transform);
+
             }
-                if (c == 'S')
+            if (c == 'S')
             {
+                /*
                 GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("red").gameObject;
                 GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
@@ -327,38 +395,68 @@ public class GameManager : MonoBehaviour
                 actualbutton2.SetActive(true);
                 actualbutton.transform.position = new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0);
                 actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
+            */
+                GameObject redtile = Instantiate(redSprite, new Vector3(RedFinal.transform.position.x, RedFinal.transform.position.y + 4 + (i) * 4, -0), redSprite.transform.rotation);
+                redtile.transform.SetParent(this.tile.transform);
+                GameObject greentile = Instantiate(greenSprite, new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0), greenSprite.transform.rotation);
+                greentile.transform.SetParent(this.tile.transform);
+
+
             }
 
             if (c == 'H')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                /*GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("blue").gameObject;
                 GameObject actualbutton2 = buttonz.transform.Find("yellow").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
                 actualbutton2.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
                 actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);
+           */
+                GameObject yellowtile = Instantiate(yellowSprite, new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0), yellowSprite.transform.rotation);
+                yellowtile.transform.SetParent(this.tile.transform);
+                GameObject bluetile = Instantiate(blueSprite, new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0), blueSprite.transform.rotation);
+                bluetile.transform.SetParent(this.tile.transform);
+
+
             }
 
             if (c == 'J')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
+
+                /*GameObject buttonz = tile.transform.GetChild(i).gameObject;
                 GameObject actualbutton = buttonz.transform.Find("blue").gameObject;
                 GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
                 actualbutton.SetActive(true);
                 actualbutton2.SetActive(true);
                 actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
                 actualbutton.transform.position = new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0);
+           
+                */
+                GameObject greentile = Instantiate(greenSprite, new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0), greenSprite.transform.rotation);
+                greentile.transform.SetParent(this.tile.transform);
+                GameObject bluetile = Instantiate(blueSprite, new Vector3(BlueFinal.transform.position.x, BlueFinal.transform.position.y + 4 + (i) * 4, -0), blueSprite.transform.rotation);
+                bluetile.transform.SetParent(this.tile.transform);
+
             }
             if (c == 'K')
             {
-                GameObject buttonz = tile.transform.GetChild(i).gameObject;
-                GameObject actualbutton = buttonz.transform.Find("yellow").gameObject;
-                GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
-                actualbutton.SetActive(true);
-                actualbutton2.SetActive(true);
-                actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
-                actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
+                /* GameObject buttonz = tile.transform.GetChild(i).gameObject;
+                 GameObject actualbutton = buttonz.transform.Find("yellow").gameObject;
+                 GameObject actualbutton2 = buttonz.transform.Find("green").gameObject;
+                 actualbutton.SetActive(true);
+                 actualbutton2.SetActive(true);
+                 actualbutton2.transform.position = new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0);
+
+                 actualbutton.transform.position = new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0);
+             */
+                GameObject yellowtile = Instantiate(yellowSprite, new Vector3(YellowFinal.transform.position.x, YellowFinal.transform.position.y + 4 + (i) * 4, -0), yellowSprite.transform.rotation);
+                yellowtile.transform.SetParent(this.tile.transform);
+
+                GameObject greentile = Instantiate(greenSprite, new Vector3(GreenFinal.transform.position.x, GreenFinal.transform.position.y + 4 + (i) * 4, -0), greenSprite.transform.rotation);
+                greentile.transform.SetParent(this.tile.transform);
+
             }
         }
     }
@@ -370,7 +468,8 @@ public class GameManager : MonoBehaviour
 
     int CountNoChild(GameObject a)
     {
-        int Noactive = this.positioninitialization.Length;
+        int NoNote = 0;
+        /*int Noactive = this.positioninitialization.Length;
         int NoNote = 0;
 
         for (int i = 0; i < Noactive; i++)
@@ -383,6 +482,11 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+        }*/
+        foreach (Transform child in a.transform)
+        {
+            if (child.gameObject.activeInHierarchy)
+                NoNote++;
         }
         return NoNote;
     }
@@ -390,4 +494,30 @@ public class GameManager : MonoBehaviour
     void makeCoop() {
         isCoop = true;
     }
+    public void updateRed(bool rd,string str,GameObject tile)
+    {
+        this.redCanBePressed = rd;
+        this.redName = str;
+        this.redToDis = tile;
+    }
+    public void updateBlue(bool rd, string str, GameObject tile)
+    {
+        this.blueCanBePressed = rd;
+        this.blueName = str;
+        this.blueToDis = tile;
+    }
+    public void updateYellow(bool rd, string str, GameObject tile)
+    {
+        this.yellowCanBePressed = rd;
+        this.yellowName = str;
+        this.yellowToDis = tile;
+    }
+    public void updateGreen(bool rd, string str, GameObject tile)
+    {
+        this.greenCanBePressed = rd;
+        this.greenName = str;
+        this.greenToDis = tile;
+    }
+
+
 }
