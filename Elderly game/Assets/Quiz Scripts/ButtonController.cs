@@ -10,11 +10,11 @@ public class ButtonController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        string input = InputManager.instance.getKeyDown();
+        List<BluetoothInput> inputs = InputManager.instance.getKeyDown();
 
-        if (input != null) {
+        if (inputs != null) {
 
-            int inputIndex = Int32.Parse(input) - 1;
+            int inputIndex = inputs[0].input;
             if (options[inputIndex].GetComponent<Option>().isCorrect) {
                 
                 QuizManager.instance.correct();

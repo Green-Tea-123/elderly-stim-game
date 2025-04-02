@@ -7,9 +7,9 @@ public class BluetoothManager : MonoBehaviour {
 
     public static BluetoothManager instance;
 
-    private BluetoothHelper bluetoothHelper;
+    private List<BluetoothHelper> bluetoothHelpers;
 
-    private string deviceName;
+    private List<string> deviceNames;
 
     void Awake() {
         if (instance == null) {
@@ -20,19 +20,26 @@ public class BluetoothManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
     void Start() {
-        this.deviceName = "ESP32_Controller_1";
-        try {
-            bluetoothHelper = BluetoothHelper.GetInstance(deviceName);
-            bluetoothHelper.OnConnected += OnConnected;
-            bluetoothHelper.OnConnectionFailed += OnConnectionFailed;
-            bluetoothHelper.setTerminatorBasedStream("\n");
-            if (bluetoothHelper.isDevicePaired()) {
-                bluetoothHelper.Connect();
-                Debug.Log("Bluetooth connected");
+        this.deviceNames = new List<string>() {"ESP32_Controller_1", "ESP32_Controller_2"};
+        this.bluetoothHelpers = new List<BluetoothHelper>();
+        for (int i = 0; i < deviceNames.Count; i++) {
+            try {
+                BluetoothHelper helper = BluetoothHelper.GetNewInstance(deviceNames[i]);
+                helper.OnConnected += OnConnected;
+                helper.OnConnectionFailed += OnConnectionFailed;
+                helper.setTerminatorBasedStream("\n");
+                this.bluetoothHelpers.Add(helper);
+
+                if (helper.isDevicePaired()) {
+                    helper.Connect();
+                    Debug.Log("Bluetooth " + i + " connected");
+                }
+
+                
+
+            } catch (System.Exception e) {
+                Debug.Log("Error: " + e.Message);
             }
-            
-        } catch (System.Exception e) {
-            Debug.Log("Error: " + e.Message);
         }
     }
 
@@ -45,16 +52,23 @@ public class BluetoothManager : MonoBehaviour {
     }
 
     // TODO modify to return controller identity and input
-    public string checkForMessage() {
-        if (bluetoothHelper != null && bluetoothHelper.Available) {
-            string msg = bluetoothHelper.Read();
-            Debug.Log(msg);
-            return msg;
+    public List<string> checkForMessage() {
+        List<string> messages = new List<string>();
+        for (int i = 0; i < bluetoothHelpers.Count; i++) {
+            if (bluetoothHelpers[i] != null && bluetoothHelpers[i].Available) {
+                string msg = bluetoothHelpers[i].Read();
+                Debug.Log(msg);
+                messages.Add(msg);
+            }
         }
-        return null;
+        return messages;
     }
 
     void CloseConnection() {
-        bluetoothHelper.Disconnect();
+        for (int i = 0; i < bluetoothHelpers.Count; i++) {
+            if (bluetoothHelpers[i] != null) {
+                bluetoothHelpers[i].Disconnect();
+            }
+        }
     }
 }
