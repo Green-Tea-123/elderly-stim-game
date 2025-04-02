@@ -2850,6 +2850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b683153cef117049bab360c5bd41e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SR: {fileID: 0}
   defaultImage: {fileID: 21300000, guid: 40aff6df4f551984f83d1a9b539e3650, type: 3}
   pressedImage: {fileID: 21300000, guid: 85456b74fd4e7414788e0063ee72e7da, type: 3}
   KeyToPress: 113
@@ -4644,6 +4645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b683153cef117049bab360c5bd41e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SR: {fileID: 0}
   defaultImage: {fileID: 21300000, guid: 0b3ab39bc09a5bf4797c7f52bf5e93d2, type: 3}
   pressedImage: {fileID: 21300000, guid: 798489c061370594a8f0fb39890f6ea8, type: 3}
   KeyToPress: 114
@@ -10591,6 +10593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b683153cef117049bab360c5bd41e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SR: {fileID: 0}
   defaultImage: {fileID: 21300000, guid: b1520668084108b49ba0555260e196c5, type: 3}
   pressedImage: {fileID: 21300000, guid: 61635d4c483f6c84586260dc0b42bcb0, type: 3}
   KeyToPress: 101
@@ -34186,7 +34189,7 @@ MonoBehaviour:
   currentStagenumber: 0
   nextStageNumber: 0
   moveon: 0
-  frontPage: {fileID: 368023961}
+  frontPage: {fileID: 0}
 --- !u!4 &1357999673
 Transform:
   m_ObjectHideFlags: 0
@@ -38275,6 +38278,18 @@ MonoBehaviour:
   scoretext: {fileID: 829973759}
   Score: 0
   ScorePernote: 1
+  isCoop: 0
+  playerTurn: 1
+  defaultButtonImages:
+  - {fileID: 21300000, guid: 40aff6df4f551984f83d1a9b539e3650, type: 3}
+  - {fileID: 21300000, guid: 9539ae19a5204c84fa38c387908538a0, type: 3}
+  - {fileID: 21300000, guid: 0b3ab39bc09a5bf4797c7f52bf5e93d2, type: 3}
+  - {fileID: 21300000, guid: b1520668084108b49ba0555260e196c5, type: 3}
+  pressedButtonImages:
+  - {fileID: 21300000, guid: 85456b74fd4e7414788e0063ee72e7da, type: 3}
+  - {fileID: 21300000, guid: f02116773443208498d60054895ca59b, type: 3}
+  - {fileID: 21300000, guid: 798489c061370594a8f0fb39890f6ea8, type: 3}
+  - {fileID: 21300000, guid: 61635d4c483f6c84586260dc0b42bcb0, type: 3}
   totalnotes: 0
   hitno: 0
   missno: 0
@@ -50915,6 +50930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b683153cef117049bab360c5bd41e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SR: {fileID: 0}
   defaultImage: {fileID: 21300000, guid: 9539ae19a5204c84fa38c387908538a0, type: 3}
   pressedImage: {fileID: 21300000, guid: f02116773443208498d60054895ca59b, type: 3}
   KeyToPress: 119

@@ -18,7 +18,7 @@ public class objectpress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(keyTopress) || GameManager.blueToothMsg == targetBlutTooth)
+        if(Input.GetKeyDown(keyTopress) || GameManager.staticBlueToothMsg == targetBlutTooth)
         {
             if (canBePress)
             {

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
+using static UnityEngine.EventSystems.PointerEventData;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoretext;
     public float Score;
     public float ScorePernote = 1;
+    public bool isCoop = false;
+    public int playerTurn = 1;
+
+    public List<Sprite> defaultButtonImages;
+    public List<Sprite> pressedButtonImages;
 
 
     [Header("Scoring panel setting ")]
@@ -46,7 +52,7 @@ public class GameManager : MonoBehaviour
     [Header("Game Pause setting ")]
     public GameObject pausePage;
 
-    public static string blueToothMsg = null;
+    public static string staticBlueToothMsg = null;
 
 
     public static Dictionary<string, string> lvlinfo = new Dictionary<string, string>(){
@@ -80,7 +86,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //blueToothMsg = InputManager.instance.getKeyDown();
+        List<BluetoothInput> blueToothMsg = InputManager.instance.getKeyDown();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             emergencyStop = !emergencyStop;
@@ -109,6 +115,92 @@ public class GameManager : MonoBehaviour
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
             }
+        }
+
+        if (isCoop) {
+            for (int i = 0; i < blueToothMsg.Count; i++) {
+                if (blueToothMsg[i].controllerId == playerTurn) {
+                    staticBlueToothMsg = blueToothMsg[i].input.ToString();
+                    int inputButton = blueToothMsg[i].input;
+                    switch (inputButton) {
+                        case 1:
+                            RedFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[0];
+                            break;
+                        case 2:
+                            GreenFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[1];
+                            break;
+                        case 3:
+                            BlueFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[2];
+                            break;
+                        case 4:
+                            YellowFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[3];
+                            break;
+                    }
+
+                    if (Input.GetKeyUp(KeyCode.Q)) {
+                        RedFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[0];
+                    } else if (Input.GetKeyUp(KeyCode.R)) {
+                        GreenFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[1];
+                    } else if (Input.GetKeyUp(KeyCode.W)) {
+                        BlueFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[2];
+                    } else if (Input.GetKeyUp(KeyCode.E)) {
+                        YellowFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[3];
+                    }
+                }
+            }
+        } else {
+            if (blueToothMsg == null) {
+                if (Input.GetKeyDown(KeyCode.Q)) {
+                    RedFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[0];
+                } else if (Input.GetKeyDown(KeyCode.R)) {
+                    GreenFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[1];
+                } else if (Input.GetKeyDown(KeyCode.W)) {
+                    BlueFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[2];
+                } else if (Input.GetKeyDown(KeyCode.E)) {
+                    YellowFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[3];
+                }
+
+                if (Input.GetKeyUp(KeyCode.Q)) {
+                    RedFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[0];
+                } else if (Input.GetKeyUp(KeyCode.R)) {
+                    GreenFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[1];
+                } else if (Input.GetKeyUp(KeyCode.W)) {
+                    BlueFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[2];
+                } else if (Input.GetKeyUp(KeyCode.E)) {
+                    YellowFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[3];
+                }
+            } else {
+                staticBlueToothMsg = blueToothMsg[0].input.ToString();
+                int inputButton = blueToothMsg[0].input;
+                switch (inputButton) {
+                    case 1:
+                        RedFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[0];
+                        break;
+                    case 2:
+                        GreenFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[1];
+                        break;
+                    case 3:
+                        BlueFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[2];
+                        break;
+                    case 4:
+                        YellowFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[3];
+                        break;
+                }
+
+                if (Input.GetKeyUp(KeyCode.Q)) {
+                    RedFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[0];
+                } else if (Input.GetKeyUp(KeyCode.R)) {
+                    GreenFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[1];
+                } else if (Input.GetKeyUp(KeyCode.W)) {
+                    BlueFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[2];
+                } else if (Input.GetKeyUp(KeyCode.E)) {
+                    YellowFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[3];
+                }
+            }
+        }
+
+        if (isCoop && Time.time % 20 == 0) {
+            playerTurn = (playerTurn == 1) ? 2 : 1;
         }
     }
     public void gameResume()
@@ -293,5 +385,9 @@ public class GameManager : MonoBehaviour
 
         }
         return NoNote;
+    }
+
+    void makeCoop() {
+        isCoop = true;
     }
 }
