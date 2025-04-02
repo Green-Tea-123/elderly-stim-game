@@ -11,12 +11,10 @@ public class NextLevel : MonoBehaviour
     public void nxtlvl()
     {
         LibraryNo.instance.Updatestagenumber(GameManager.instance.lvlNo);
+        LibraryNo.instance.moveon = true;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
-        frontPage.SetActive(false);
-        GameManager.instance.UpdatetheTile(GameManager.lvlinfo[LibraryNo.instance.getNextStageNo().ToString()]);
-
-        GameManager.instance.updateLvl(LibraryNo.instance.getNextStageNo());
+        
     }
 
 }

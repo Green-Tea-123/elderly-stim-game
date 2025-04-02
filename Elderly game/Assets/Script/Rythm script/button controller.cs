@@ -11,6 +11,7 @@ public class buttoncontroller : MonoBehaviour
     public KeyCode KeyToPress;
 
     public string Bluetoothmsg;
+    
 
     // Start is called before the first frame update
     void Start()

@@ -10,6 +10,8 @@ public class LibraryNo : MonoBehaviour
     public static LibraryNo instance;
     public int currentStagenumber;
     public int nextStageNumber;
+    public bool moveon;
+    public GameObject frontPage;
     private void Awake()
     {
         if (instance == null)
@@ -25,12 +27,24 @@ public class LibraryNo : MonoBehaviour
 
     private void Start()
     {
-        this.currentStagenumber = 0;
-        this.nextStageNumber=this.currentStagenumber++;
+        if (moveon) { 
+        frontPage.SetActive(false);
+        GameManager.instance.UpdatetheTile(GameManager.lvlinfo[getNextStageNo().ToString()]);
+
+        GameManager.instance.updateLvl(getNextStageNo());
+            moveon = !false;
+
+    }
+    }
+
+    private void Update()
+    {
+        Updatestagenumber(GameManager.instance.lvlNo);
     }
     public void Updatestagenumber(int a)
     {
-        this.currentStagenumber = a;    
+        this.currentStagenumber = a;
+        this.nextStageNumber = a + 1;
     }
     public int getStageNo()
     {
