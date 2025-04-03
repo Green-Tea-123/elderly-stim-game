@@ -20,9 +20,10 @@ public class QuizManager : MonoBehaviour
     public TextMeshProUGUI TimerTxt;
     public int score = 0;
     public float currentTime;
-    public int timelimit = 30;
+    public int timelimit = 15;
     private bool gamestatus = false;
-
+    public GameObject correctText;
+    public GameObject wrongText;
     private void Awake() {
         instance = this;
     }
@@ -52,6 +53,7 @@ public class QuizManager : MonoBehaviour
                 
 
             }
+            Instantiate(correctText, new Vector3(options[showoptiontxt].transform.position.x, options[showoptiontxt].transform.position.y),correctText.transform.rotation);
             correcttxt[showoptiontxt].enabled = true;
             if (currentTime == 0){
                 gamestatus = false;
@@ -64,12 +66,33 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    public void wrong() {
-        gamestatus = false;
+    public void wrong()
+    {
+        int showoptiontxt = QnA[currentQuestion].CorrectAnswer - 1;
+        score++;
         QnA.RemoveAt(currentQuestion);
-        if (QnA.Count > 0) {
-            generateQuestion();
-        } else {
+        if (QnA.Count > 0)
+        {
+
+            for (int i = 0; i < options.Length; i++)
+            {
+
+                options[i].SetActive(false);
+                Instantiate(wrongText, new Vector3(options[showoptiontxt].transform.position.x, options[showoptiontxt].transform.position.y), wrongText.transform.rotation);
+
+
+            }
+            wrongtxt[showoptiontxt].enabled = true;
+            if (currentTime == 0)
+            {
+                gamestatus = false;
+                generateQuestion();
+
+            }
+
+        }
+        else
+        {
             endQuiz();
         }
     }
@@ -111,6 +134,10 @@ public class QuizManager : MonoBehaviour
     {
      
         gamestatus = true;
+        for (int i = 0; i < options.Length; i++)
+        {
+            options[i].SetActive(true);
+        }
         currentTime = timelimit;
         currentQuestion = UnityEngine.Random.Range(0, QnA.Count);
         QuestionTxt.text = QnA[currentQuestion].Question;
