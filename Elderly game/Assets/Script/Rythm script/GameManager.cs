@@ -144,15 +144,31 @@ public class GameManager : MonoBehaviour
                     switch (inputButton) {
                         case 1:
                             RedFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[0];
+                            if (redCanBePressed)
+                {
+                                redToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                }
                             break;
                         case 2:
                             GreenFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[1];
+                            if (greenCanBePressed)
+                            {
+                                greenToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                            }
                             break;
                         case 3:
                             BlueFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[2];
+                            if (blueCanBePressed)
+                            {
+                            blueToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                            }
                             break;
                         case 4:
                             YellowFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[3];
+                            if (yellowCanBePressed)
+                            {
+                            yellowToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                            }
                             break;
                     }
 
@@ -171,6 +187,7 @@ public class GameManager : MonoBehaviour
             if (blueToothMsg == null) {
                 if (Input.GetKeyDown(KeyCode.Q)) {
                     RedFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[0];
+
                 } else if (Input.GetKeyDown(KeyCode.R)) {
                     GreenFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[1];
                 } else if (Input.GetKeyDown(KeyCode.W)) {
@@ -194,15 +211,31 @@ public class GameManager : MonoBehaviour
                 switch (inputButton) {
                     case 1:
                         RedFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[0];
+                        if (redCanBePressed)
+                        {
+                        redToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                        }
                         break;
                     case 2:
                         GreenFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[1];
+                        if (greenCanBePressed)
+                        {
+                            greenToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                        }
                         break;
                     case 3:
                         BlueFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[2];
+                        if (blueCanBePressed)
+                        {
+                            blueToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                        }
                         break;
                     case 4:
                         YellowFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[3];
+                        if (yellowCanBePressed)
+                        {
+                            yellowToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                        }
                         break;
                 }
 

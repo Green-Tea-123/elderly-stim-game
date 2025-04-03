@@ -11,6 +11,7 @@ public class RythmGameLvlSelection : MonoBehaviour
     // Start is called before the first frame update
     public GameObject initializePage;
     public TMP_Text textz;
+    public GameObject score;
 
     public void gameStart()
     {
@@ -18,6 +19,8 @@ public class RythmGameLvlSelection : MonoBehaviour
         GameManager.instance.updateLvl(int.Parse(textz.text));
         GameManager.instance.UpdatetheTile(GameManager.lvlinfo[textz.text]);
         initializePage.SetActive(false);
+        score.SetActive(true);
+
     }
 
 

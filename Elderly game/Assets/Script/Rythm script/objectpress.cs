@@ -54,19 +54,19 @@ public class objectpress : MonoBehaviour
         if (collision.tag == "Activator" && gameObject.activeSelf)
         {
 
-            if (gameObject.name == "red")
+            if (gameObject.name.Substring(0,1) == "r")
             {
                 GameManager.instance.updateRed(false, "empty",null);
             }
-            else if (gameObject.name == "green")
+            else if (gameObject.name.Substring(0, 1) == "g")
             {
                 GameManager.instance.updateGreen(false, "empty",null);
             }
-            else if (gameObject.name == "yellow")
+            else if (gameObject.name.Substring(0, 1) == "y")
             {
                 GameManager.instance.updateYellow(false, "empty", null);
             }
-            else if (gameObject.name == "blue")
+            else if (gameObject.name.Substring(0, 1) == "b")
             {
                 GameManager.instance.updateBlue(false, "empty", null);
             }
