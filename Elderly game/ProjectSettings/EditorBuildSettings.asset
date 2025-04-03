@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rythm game.unity
     guid: 8deac6fe19cc1f24dbe7450ca1d88420
+  - enabled: 1
+    path: Assets/Scenes/Quizcoverpage.unity
+    guid: aabfabe3fcaeddc4282b3f8459572784
   m_configObjects: {}
