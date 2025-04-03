@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ButtonController : MonoBehaviour {
     public GameObject[] options;
 
+
     // Update is called once per frame
     void Update() {
         List<BluetoothInput> inputs = InputManager.instance.getKeyDown();
@@ -28,24 +29,39 @@ public class ButtonController : MonoBehaviour {
         } else {
             int inputIndex;
             // redundancy code for keyboard keys
-            if (Input.GetKeyDown(KeyCode.W)) {
-                inputIndex = 0;
-                
-            } else if (Input.GetKeyDown(KeyCode.E)) {
-                inputIndex = 1;
-            } else if (Input.GetKeyDown(KeyCode.S)) {
-                inputIndex = 2;
-            } else if (Input.GetKeyDown(KeyCode.D)) {
-                inputIndex = 3;
-            } else {
-                return;
-            }
+            if (options[0].activeSelf)
+            {
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    inputIndex = 0;
 
-            if (options[inputIndex].GetComponent<Option>().isCorrect) {
-             
-                QuizManager.instance.correct();
-            } else {
-                QuizManager.instance.wrong();
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    inputIndex = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.S))
+                {
+                    inputIndex = 2;
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    inputIndex = 3;
+                }
+                
+
+
+            else
+                {
+                    return;
+                }
+
+                if (options[inputIndex].GetComponent<Option>().isCorrect) {
+
+                    QuizManager.instance.correct();
+                } else {
+                    QuizManager.instance.wrong();
+                }
             }
         }
     }

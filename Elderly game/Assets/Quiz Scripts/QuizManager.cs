@@ -47,7 +47,7 @@ public class QuizManager : MonoBehaviour
  
             for (int i = 0; i<options.Length; i++)
             {
-                
+               
                 options[i].SetActive(false);
                 
 
