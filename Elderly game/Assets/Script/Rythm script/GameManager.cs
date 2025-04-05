@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using static UnityEngine.EventSystems.PointerEventData;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -86,13 +87,27 @@ public class GameManager : MonoBehaviour
     {"9", "RFDSHKBJYGRBYGFDSHKBJYGRBKYGJFDSRFDSHKBJYGRBYGFDSHKBJYGRBKYGJFDS"},
     {"10", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFHJRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFHJ"},
     {"11", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDSRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDS"},
-    {"12", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDSRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDS"}
+    {"12", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDSRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDS"},
+    {"13", ""}
     };
     private void Awake()
     {
       
         instance = this;
-        
+        string lvlno = "";
+        if (SceneManager.GetActiveScene().name.Contains("Rythmgame_fast"))
+        {
+            this.framerate = 30f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_fast");
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_medium")) {
+            this.framerate = 60f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_medium");
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_slow")) { 
+            this.framerate = 90f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_slow");
+        }
+        Debug.Log(lvlno);
+        UpdatetheTile(lvlinfo[lvlno]);
 
     }
 

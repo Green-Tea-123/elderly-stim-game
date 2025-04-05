@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.11947959, y: -0.10109833, z: 4.1310854}
-  m_LocalScale: {x: 0.9190763, y: 0.9190764, z: 0.9190764}
+  m_LocalScale: {x: 3.9816225, y: 3.9816227, z: 4.1807036}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2574742909887246319}
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -980,7 +980,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 20
+        scalar: 300
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -4916,7 +4916,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.07021999, y: -2.7431922, z: 0}
-  m_LocalScale: {x: 1.0880489, y: 1.0880489, z: 1.0880489}
+  m_LocalScale: {x: 2.3863091, y: 2.3863091, z: 2.3863091}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6310724474468233609}
@@ -4986,4 +4986,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b39b74ea1baff46ad697b08162e2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 1
+  lifeTime: 0.5

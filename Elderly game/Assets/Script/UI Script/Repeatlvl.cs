@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Repeatlvl : MonoBehaviour
 {
@@ -9,9 +10,7 @@ public class Repeatlvl : MonoBehaviour
     public void repeatlvl()
     {
 
-        GameManager.instance.UpdatetheTile(GameManager.lvlinfo[GameManager.instance.lvlNo.ToString()]);
-        result.SetActive(false);
-        GameManager.instance.resetGameValue();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
