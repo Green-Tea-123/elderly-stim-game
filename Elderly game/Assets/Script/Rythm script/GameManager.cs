@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool emergencyStop;
     public float framerate = 60f;
     public int lvlNo;
+    public bool hasended = false;
     [Header("In game Score")]
     public TextMeshProUGUI scoretext;
     public float Score;
@@ -146,6 +147,7 @@ public class GameManager : MonoBehaviour
         {
             if ( hitno + missno == totalnotes && !resultScreen.activeInHierarchy && !emergencyStop && !coverpage.activeSelf) { 
             resultScreen.SetActive(true);
+                hasended = true;
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
             }
