@@ -10,20 +10,27 @@ using UnityEngine.UIElements;
 public class QuizManager : MonoBehaviour
 {
     public static QuizManager instance;
-    public List<QuestionsAndAnswers> QnA = QuestionBank.generateQuestions();
+    public List<QuestionBank> QnA;
     public GameObject[] options;
     public TextMeshProUGUI[] correcttxt;
     public TextMeshProUGUI[] wrongtxt;
-  
+    public TextMeshProUGUI scoretxt1;
+    public TextMeshProUGUI scoretxt2;
+    public TextMeshProUGUI scoretxtfinal1;
+    public TextMeshProUGUI scoretxtfinal2;
+
     public int currentQuestion;
-    public Text QuestionTxt;
+    public UnityEngine.UI.Image QuestionTxt;
     public TextMeshProUGUI TimerTxt;
-    public int score = 0;
+    public int score1 = 0;
+    public int score2 = 0;
     public float currentTime;
     public int timelimit = 15;
     private bool gamestatus = false;
     public GameObject correctText;
     public GameObject wrongText;
+    public GameObject continuebutton;
+    
     private void Awake() {
         instance = this;
     }
@@ -42,7 +49,6 @@ public class QuizManager : MonoBehaviour
     public void correct()
     {
         int showoptiontxt = QnA[currentQuestion].CorrectAnswer - 1;
-        score++;
         QnA.RemoveAt(currentQuestion);
         if (QnA.Count > 0 ) {
  
@@ -57,7 +63,7 @@ public class QuizManager : MonoBehaviour
             correcttxt[showoptiontxt].enabled = true;
             if (currentTime == 0){
                 gamestatus = false;
-                generateQuestion();
+                //generateQuestion();
 
             }
             
@@ -66,10 +72,20 @@ public class QuizManager : MonoBehaviour
         }
     }
 
+    public void score(int id)
+    {
+        if (id == 1)
+        {
+            score1++;
+        }
+        else
+        {
+            score2++;
+        }
+    }
     public void wrong()
     {
         int showoptiontxt = QnA[currentQuestion].CorrectAnswer - 1;
-        score++;
         QnA.RemoveAt(currentQuestion);
         if (QnA.Count > 0)
         {
@@ -86,7 +102,7 @@ public class QuizManager : MonoBehaviour
             if (currentTime == 0)
             {
                 gamestatus = false;
-                generateQuestion();
+                //generateQuestion();
 
             }
 
@@ -102,7 +118,7 @@ public class QuizManager : MonoBehaviour
         for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<Option>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = QnA[currentQuestion].Answers[i];
+            options[i].transform.GetChild(3).GetComponent<UnityEngine.UI.Image>().sprite = QnA[currentQuestion].Answers[i];
 
             if (QnA[currentQuestion].CorrectAnswer == i + 1)
             {
@@ -122,7 +138,7 @@ public class QuizManager : MonoBehaviour
         {
             if (QnA.Count > 0)
             {
-                generateQuestion();
+                //generateQuestion();
             }
             else
             {
@@ -140,11 +156,16 @@ public class QuizManager : MonoBehaviour
         }
         currentTime = timelimit;
         currentQuestion = UnityEngine.Random.Range(0, QnA.Count);
-        QuestionTxt.text = QnA[currentQuestion].Question;
+        QuestionTxt.sprite = QnA[currentQuestion].Question;
         SetAnswers();
         SetTimer(currentTime);
  
        
+    }
+    public void continuegame()
+    {
+        continuebutton.SetActive(true);
+        generateQuestion();
     }
 
     private void Update()
@@ -153,11 +174,15 @@ public class QuizManager : MonoBehaviour
         {
             currentTime -= Time.deltaTime;
             SetTimer(currentTime);
+            scoretxt1.text = "Player 1 score:" + score1;
+            scoretxt2.text = "Player 2 score:" + score2;
         }
     }
 
     void endQuiz() {
-        QuestionTxt.text = "Your final score is: " + score;
+        scoretxtfinal1.text = "Player 1 final score is: " + score1;
+        scoretxtfinal2.text = "Player 2 final score is: " + score2;
+
         for (int i = 0; i < options.Length; i++) {
             options[i].SetActive(false);
         }

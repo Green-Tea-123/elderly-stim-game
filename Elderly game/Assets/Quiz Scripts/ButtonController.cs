@@ -29,12 +29,12 @@ public class ButtonController : MonoBehaviour
                         {
 
                             QuizManager.instance.correct();
-
+                            QuizManager.instance.score(1);
                         }
                         else
                         {
-
                             QuizManager.instance.wrong();
+                            QuizManager.instance.score(2);
 
                         }
                         // do more stuff
@@ -92,6 +92,7 @@ public class ButtonController : MonoBehaviour
             {
 
                 QuizManager.instance.correct();
+                QuizManager.instance.score(1);
             }
             else
             {
