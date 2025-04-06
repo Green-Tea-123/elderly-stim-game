@@ -25,11 +25,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoretext;
     public float Score;
     public float ScorePernote = 1;
-    public bool isCoop = false;
+    public bool isCoop = true; //TODO change to false
     public int playerTurn = 1;
 
     public List<Sprite> defaultButtonImages;
     public List<Sprite> pressedButtonImages;
+
+    public GameObject background;
+    public TextMeshProUGUI playerIndicator;
+    public bool locked = false;
 
 
     [Header("Scoring panel setting ")]
@@ -296,8 +300,17 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (isCoop && Time.time % 20 == 0) {
-            playerTurn = (playerTurn == 1) ? 2 : 1;
+        // A bit stupid way to implement co op but whatever
+        if (isCoop && ((int)Time.time % 5 == 0)) {
+            if (!locked) {
+                locked = true;
+                playerTurn = (playerTurn == 1) ? 2 : 1;
+                this.playerIndicator.text = "Player " + playerTurn;
+                this.background.GetComponent<SpriteRenderer>().color = (playerTurn == 1) ? new Color(77, 85, 101, 255) : new Color(124, 156, 130, 255);
+                Debug.Log("Turn changing");
+            }
+        } else if ((int)Time.time % 5 != 0) {
+            locked = false;
         }
     }
     public void gameResume()
