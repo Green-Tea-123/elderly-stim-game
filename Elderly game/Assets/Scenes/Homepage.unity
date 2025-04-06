@@ -1495,7 +1495,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1815231315}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1815231312}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1815231315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,8 +1558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafd5be3cfd113e4daf5fffeba28a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Rythm game
-  button: {fileID: 0}
+  nextSceneName: Rythm game_difficulty selection
+  button: {fileID: 1815231314}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

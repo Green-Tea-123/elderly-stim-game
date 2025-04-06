@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RythmGameLvlSelection : MonoBehaviour
 {
@@ -15,11 +16,20 @@ public class RythmGameLvlSelection : MonoBehaviour
 
     public void gameStart()
     {
+        string lvlselection = "";
+        if(SceneManager.GetActiveScene().name == "Rythmgame_fastlvl")
+        {
+            lvlselection = "Rythmgame_fast";
 
-        GameManager.instance.updateLvl(int.Parse(textz.text));
-        GameManager.instance.UpdatetheTile(GameManager.lvlinfo[textz.text]);
-        initializePage.SetActive(false);
-        score.SetActive(true);
+        } else if (SceneManager.GetActiveScene().name == "Rythmgame_mediumlvl")
+        {
+            lvlselection = "Rythmgame_medium";
+        } else if (SceneManager.GetActiveScene().name == "Rythmgame_slowlvl")
+        {
+            lvlselection = "Rythmgame_slow";
+        }
+        lvlselection = lvlselection + textz.text;
+        SceneManager.LoadScene(lvlselection);
 
     }
 

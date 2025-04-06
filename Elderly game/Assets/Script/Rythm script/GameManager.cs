@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using static UnityEngine.EventSystems.PointerEventData;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,15 +20,20 @@ public class GameManager : MonoBehaviour
     public bool emergencyStop;
     public float framerate = 60f;
     public int lvlNo;
+    public bool hasended = false;
     [Header("In game Score")]
     public TextMeshProUGUI scoretext;
     public float Score;
     public float ScorePernote = 1;
-    public bool isCoop = false;
+    public bool isCoop = true; //TODO change to false
     public int playerTurn = 1;
 
     public List<Sprite> defaultButtonImages;
     public List<Sprite> pressedButtonImages;
+
+    public GameObject background;
+    public TextMeshProUGUI playerIndicator;
+    public bool locked = false;
 
 
     [Header("Scoring panel setting ")]
@@ -86,13 +92,27 @@ public class GameManager : MonoBehaviour
     {"9", "RFDSHKBJYGRBYGFDSHKBJYGRBKYGJFDSRFDSHKBJYGRBYGFDSHKBJYGRBKYGJFDS"},
     {"10", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFHJRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFHJ"},
     {"11", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDSRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDS"},
-    {"12", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDSRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDS"}
+    {"12", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDSRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDS"},
+    {"13", ""}
     };
     private void Awake()
     {
       
         instance = this;
-        
+        string lvlno = "";
+        if (SceneManager.GetActiveScene().name.Contains("Rythmgame_fast"))
+        {
+            this.framerate = 30f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_fast");
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_medium")) {
+            this.framerate = 60f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_medium");
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_slow")) { 
+            this.framerate = 90f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_slow");
+        }
+        Debug.Log(lvlno);
+        UpdatetheTile(lvlinfo[lvlno]);
 
     }
 
@@ -131,6 +151,7 @@ public class GameManager : MonoBehaviour
         {
             if ( hitno + missno == totalnotes && !resultScreen.activeInHierarchy && !emergencyStop && !coverpage.activeSelf) { 
             resultScreen.SetActive(true);
+                hasended = true;
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
             }
@@ -279,8 +300,17 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (isCoop && Time.time % 20 == 0) {
-            playerTurn = (playerTurn == 1) ? 2 : 1;
+        // A bit stupid way to implement co op but whatever
+        if (isCoop && ((int)Time.time % 5 == 0)) {
+            if (!locked) {
+                locked = true;
+                playerTurn = (playerTurn == 1) ? 2 : 1;
+                this.playerIndicator.text = "Player " + playerTurn;
+                this.background.GetComponent<SpriteRenderer>().color = (playerTurn == 1) ? new Color(77, 85, 101, 255) : new Color(124, 156, 130, 255);
+                Debug.Log("Turn changing");
+            }
+        } else if ((int)Time.time % 5 != 0) {
+            locked = false;
         }
     }
     public void gameResume()

@@ -49,13 +49,13 @@ void setup() {
 }
 
 void loop() {
-    String message = "";
+    String message = "1,";
 
     if (button1Flag) {
         if (millis() - lastDebounceTime1 > debounceDelay) {
             lastDebounceTime1 = millis();
-            SerialBT.println('1');
-            Serial.println('1');
+            SerialBT.println(message + "1");
+            Serial.println(message + "1");
         }
         button1Flag = false;
     }
@@ -63,7 +63,8 @@ void loop() {
     if (button2Flag) {
         if (millis() - lastDebounceTime2 > debounceDelay) {
             lastDebounceTime2 = millis();
-            SerialBT.println('2');
+            SerialBT.println(message + "2");
+            Serial.println(message + "2");
         }
         button2Flag = false;
     }
@@ -71,7 +72,8 @@ void loop() {
     if (button3Flag) {
         if (millis() - lastDebounceTime3 > debounceDelay) {
             lastDebounceTime3 = millis();
-            SerialBT.println('3');
+            SerialBT.println(message + "3");
+            Serial.println(message + "3");
         }
         button3Flag = false;
     }
@@ -79,7 +81,8 @@ void loop() {
     if (button4Flag) {
         if (millis() - lastDebounceTime4 > debounceDelay) {
             lastDebounceTime4 = millis();
-            SerialBT.println('4');
+            SerialBT.println(message + "4");
+            Serial.println(message + "4");
         }
         button4Flag = false;
     }
