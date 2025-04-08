@@ -16,95 +16,103 @@ public class MemoryGame : MonoBehaviour
     // Start is called before the first frame update
     public static MemoryGame instance;
     public int correctNo;
+    [Header("Game settings")]
+    public float xMin = 4;
+    public float xMax = 20;
+    public float yMin = 0;
+    public float yMax = 4;
 
-    [Header("Scoring panel setting ")]
-    public GameObject correctAnswer;
-    public GameObject wrongAnswer;
-    public GameObject model3;
-    public GameObject model4;
-    public GameObject LeftScoller;
-    public GameObject RightScoller;
+    public float speed = 60;
+
+
+    [Header("Animal prefebs")]
+    public GameObject dog;
+    public GameObject cat;
+    public GameObject chick;
+    public GameObject cow;
+    public GameObject donkey;
+    public GameObject duck;
+    public GameObject elephant;
+    public GameObject frog;
+    public GameObject goat;
+    public GameObject lilpok;
+    public GameObject lion;
+    public GameObject monkey;
+    public GameObject pig;
+    public GameObject rooster;
+    public GameObject sheep;
+
+    public string lvlset;
+    void Awake() {
+        instance = this;
+
+    }
 
     void Start()
     {
-        instance = this;
+        initiateAnimals(lvlset);
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateAnswer(correctNo);
+
     }
 
-    public void updateAnswer(int correctNo)
+    public void initiateAnimals(string animals)
     {
-        int oneside = Random.Range(0, correctNo);
-        int onesideDistraction = 2* correctNo;
-        int theOtherside = correctNo- oneside;
-        int theOtherSideDistraction = 3*theOtherside;
-        int leftSideTotal = oneside+onesideDistraction;
-        int rightSideTotal = theOtherside+ theOtherSideDistraction;
-        List<int> correctCountLeft = new List<int>();
-        List<int> correctCountRight = new List<int>();
-
-        for (int i = 0; i < oneside; i++)
+        string b = animals.ToUpper();
+        int alength = animals.Length;
+        for (int i = 0; i < alength ; i++)
         {
-            int a = Random.Range(0, leftSideTotal-i);
-            if (correctCountLeft.Contains(a))
-            {
-                i--;
+            char c = b[i];
+            if (c == 'C') {
+                GameObject catz = Instantiate(cat, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), cat.transform.rotation);
             }
-            else
-            {
-                correctCountLeft.Add(a);
+            if (c == 'Q') {
+                GameObject chickz = Instantiate(chick, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), chick.transform.rotation);
             }
-
-        }
-
-        for (int i = 0; i < theOtherside; i++)
-        {
-            int a = Random.Range(0, leftSideTotal - i);
-            if (correctCountRight.Contains(a))
-            {
-                i--;
+            if (c == 'N') {
+                GameObject cowz = Instantiate(cow, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), cow.transform.rotation);
             }
-            else
-            {
-                correctCountRight.Add(a);
+            if (c == 'D') {
+                GameObject dogz = Instantiate(dog, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), dog.transform.rotation);
             }
-
-        }
-
-
-        for (int i = 0;i < leftSideTotal; i++)
-        {
-            if (correctCountLeft.Contains(i))
-            {
-                GameObject correctobj = Instantiate(correctAnswer, new Vector3(LeftScoller.transform.position.x - 1 * i, this.transform.position.y), correctAnswer.transform.rotation);
-                correctobj.transform.SetParent(LeftScoller.transform);
+            if (c == 'F') {
+                GameObject donkeyz = Instantiate(donkey, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), donkey.transform.rotation);
             }
-            else
-            {
-                GameObject wrongObj = Instantiate(wrongAnswer, new Vector3(LeftScoller.transform.position.x - 1 * i, this.transform.position.y), correctAnswer.transform.rotation);
-                wrongObj.transform.SetParent(LeftScoller.transform);
+            if (c == 'G') {
+                GameObject duckz = Instantiate(duck, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), duck.transform.rotation);
             }
-
-        }
-
-        for (int i = 0; i < rightSideTotal; i++)
-        {
-            if (correctCountLeft.Contains(i))
-            {
-                GameObject correctobj = Instantiate(correctAnswer, new Vector3(RightScoller.transform.position.x + 1 * i, this.transform.position.y), correctAnswer.transform.rotation);
-                correctobj.transform.SetParent(RightScoller.transform);
+            if (c == 'E') {
+                GameObject elephantz = Instantiate(elephant, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), elephant.transform.rotation);
             }
-            else
-            {
-                GameObject wrongObj = Instantiate(wrongAnswer, new Vector3(RightScoller.transform.position.x + 1 * i, this.transform.position.y), correctAnswer.transform.rotation);
-                wrongObj.transform.SetParent(RightScoller.transform);
+            if (c == 'H') {
+                GameObject frogz = Instantiate(frog, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), frog.transform.rotation);
             }
-        }
-    }
+            if (c == 'G') {
+                GameObject goatZ = Instantiate(goat, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), goat.transform.rotation);
+            }
+            if (c == 'L') {
+                GameObject Lilpokz = Instantiate(lilpok, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), lilpok.transform.rotation);
+            }
+            if (c == 'S') {
+                GameObject lionz = Instantiate(lion, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), lion.transform.rotation);
+            }
+            if (c == 'M') {
+                GameObject monkeyz = Instantiate(monkey, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), monkey.transform.rotation);
+            }
+            if (c == 'P') {
+                GameObject pigz = Instantiate(pig, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), pig.transform.rotation);
+            }
+            if (c == 'R') {
+                GameObject roosterz = Instantiate(rooster, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), rooster.transform.rotation);
+            }
+            if (c == 'M') {
+                GameObject sheepz = Instantiate(sheep, new Vector3(Random.Range(xMin,xMax), Random.Range(yMin,yMax), 0), sheep.transform.rotation);
+            }
+    };
 
     
+}
 }
