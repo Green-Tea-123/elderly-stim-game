@@ -199,6 +199,14 @@ public class QuizManager : MonoBehaviour
             options[i].transform.GetChild(4).GetComponent<RawImage>().enabled = false;
             options[i].transform.GetChild(7).GetComponent<RawImage>().enabled = false;
         }
+
+        for (int i = 0; i < options.Length; i++) {
+            options[i].transform.GetChild(5).GetComponent<UnityEngine.UI.Image>().enabled = false;
+            options[i].transform.GetChild(5).GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+            options[i].transform.GetChild(6).GetComponent<UnityEngine.UI.Image>().enabled = false;
+            options[i].transform.GetChild(6).GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+        }
+
         currentTime = timelimit;
         currentQuestion = UnityEngine.Random.Range(0, QnA.Count);
         QuestionTxt.sprite = QnA[currentQuestion].Question;
