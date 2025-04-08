@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class cardcontroller : MonoBehaviour
 {
+    public static cardcontroller instance;
     [SerializeField] Sprite[] sprites;
     [SerializeField] card cardprefab;
     [SerializeField] Transform gridtransform;
@@ -19,7 +20,10 @@ public class cardcontroller : MonoBehaviour
     card firstselected;
     card secondselected;
 
+    public void playerselect(int id, int input)
+    {
 
+    }
     private void Start()
     {
         finishtext.enabled = false;
