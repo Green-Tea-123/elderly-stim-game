@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4209823122051282193}
   - component: {fileID: 8560025678345138725}
+  - component: {fileID: -816862886674505781}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1524985065923944821}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3074824, y: -0.2259084, z: 90.00001}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -44,7 +45,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8c1f4ca9f97f7a44f86c1bd14c18d492, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -129,6 +130,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-816862886674505781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524985065923944821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7ae61997526934895bed913d2c2f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 120
+  hasStart: 0
+  initialPos: 0
 --- !u!1 &4148130931162388996
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +171,7 @@ Transform:
   m_GameObject: {fileID: 4148130931162388996}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3074824, y: 0.2259084, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
