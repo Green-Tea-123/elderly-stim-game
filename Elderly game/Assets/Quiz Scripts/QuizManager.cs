@@ -19,8 +19,9 @@ public class QuizManager : MonoBehaviour
 
     public TextMeshProUGUI scoretxt1;
     public TextMeshProUGUI scoretxt2;
-    public TextMeshProUGUI scoretxtfinal1;
-    public TextMeshProUGUI scoretxtfinal2;
+    public GameObject scoretxtfinal1;
+    public GameObject scoretxtfinal2;
+    public GameObject endscreen;
 
     public int currentQuestion;
     public UnityEngine.UI.Image QuestionTxt;
@@ -299,8 +300,11 @@ public class QuizManager : MonoBehaviour
         }
     }
     void endQuiz() {
-        scoretxtfinal1.text = "Player 1 final score is: " + score1;
-        scoretxtfinal2.text = "Player 2 final score is: " + score2;
+        endscreen.SetActive(true);
+        scoretxtfinal1.SetActive(true);
+        scoretxtfinal2.SetActive(true);
+        scoretxtfinal1.GetComponent<TextMeshProUGUI>().text = "Player 1 final score is: " + score1;
+        scoretxtfinal2.GetComponent<TextMeshProUGUI>().text = "Player 2 final score is: " + score2;
 
         for (int i = 0; i < options.Length; i++) {
             options[i].SetActive(false);
