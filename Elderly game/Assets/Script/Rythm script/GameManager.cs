@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public float ScorePernote = 1;
     public bool isCoop = true; //TODO change to false
     public int playerTurn = 1;
+    public int[] isPressedDown = { 0, 0, 0, 0 };
+    public static int pressedDownDelay = 30;
 
     public List<Sprite> defaultButtonImages;
     public List<Sprite> pressedButtonImages;
@@ -157,7 +159,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (isCoop) {
+        if (isCoop && blueToothMsg != null) {
             for (int i = 0; i < blueToothMsg.Count; i++) {
                 if (blueToothMsg[i].controllerId == playerTurn) {
                     staticBlueToothMsg = blueToothMsg[i].input.ToString();
@@ -165,13 +167,14 @@ public class GameManager : MonoBehaviour
                     switch (inputButton) {
                         case 1:
                             RedFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[0];
-                            if (redCanBePressed)
-                {
+                            isPressedDown[inputButton - 1] = pressedDownDelay;
+                            if (redCanBePressed) {
                                 redToDis.gameObject.GetComponent<objectpress>().objectDisappear();
-                }
+                            }
                             break;
                         case 2:
                             GreenFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[1];
+                            isPressedDown[inputButton - 1] = pressedDownDelay;
                             if (greenCanBePressed)
                             {
                                 greenToDis.gameObject.GetComponent<objectpress>().objectDisappear();
@@ -179,28 +182,20 @@ public class GameManager : MonoBehaviour
                             break;
                         case 3:
                             BlueFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[2];
+                            isPressedDown[inputButton - 1] = pressedDownDelay;
                             if (blueCanBePressed)
                             {
-                            blueToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                                blueToDis.gameObject.GetComponent<objectpress>().objectDisappear();
                             }
                             break;
                         case 4:
                             YellowFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[3];
+                            isPressedDown[inputButton - 1] = pressedDownDelay;
                             if (yellowCanBePressed)
                             {
-                            yellowToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                                yellowToDis.gameObject.GetComponent<objectpress>().objectDisappear();
                             }
                             break;
-                    }
-
-                    if (Input.GetKeyUp(KeyCode.Q)) {
-                        RedFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[0];
-                    } else if (Input.GetKeyUp(KeyCode.R)) {
-                        GreenFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[1];
-                    } else if (Input.GetKeyUp(KeyCode.W)) {
-                        BlueFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[2];
-                    } else if (Input.GetKeyUp(KeyCode.E)) {
-                        YellowFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[3];
                     }
                 }
             }
@@ -232,13 +227,15 @@ public class GameManager : MonoBehaviour
                 switch (inputButton) {
                     case 1:
                         RedFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[0];
+                        isPressedDown[inputButton - 1] = pressedDownDelay;
                         if (redCanBePressed)
                         {
-                        redToDis.gameObject.GetComponent<objectpress>().objectDisappear();
+                            redToDis.gameObject.GetComponent<objectpress>().objectDisappear();
                         }
                         break;
                     case 2:
                         GreenFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[1];
+                        isPressedDown[inputButton - 1] = pressedDownDelay;
                         if (greenCanBePressed)
                         {
                             greenToDis.gameObject.GetComponent<objectpress>().objectDisappear();
@@ -246,6 +243,7 @@ public class GameManager : MonoBehaviour
                         break;
                     case 3:
                         BlueFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[2];
+                        isPressedDown[inputButton - 1] = pressedDownDelay;
                         if (blueCanBePressed)
                         {
                             blueToDis.gameObject.GetComponent<objectpress>().objectDisappear();
@@ -253,21 +251,12 @@ public class GameManager : MonoBehaviour
                         break;
                     case 4:
                         YellowFinal.GetComponent<SpriteRenderer>().sprite = pressedButtonImages[3];
+                        isPressedDown[inputButton - 1] = pressedDownDelay;
                         if (yellowCanBePressed)
                         {
                             yellowToDis.gameObject.GetComponent<objectpress>().objectDisappear();
                         }
                         break;
-                }
-
-                if (Input.GetKeyUp(KeyCode.Q)) {
-                    RedFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[0];
-                } else if (Input.GetKeyUp(KeyCode.R)) {
-                    GreenFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[1];
-                } else if (Input.GetKeyUp(KeyCode.W)) {
-                    BlueFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[2];
-                } else if (Input.GetKeyUp(KeyCode.E)) {
-                    YellowFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[3];
                 }
             }
             if (Input.GetKeyDown(KeyCode.Q))
@@ -300,16 +289,37 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        for (int j = 0; j < isPressedDown.Length; j++) {
+            if (isPressedDown[j] > 0) {
+                isPressedDown[j]--;
+            } else {
+                switch (j) {
+                    case 0:
+                        RedFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[0];
+                        break;
+                    case 1:
+                        GreenFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[1];
+                        break;
+                    case 2:
+                        BlueFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[2];
+                        break;
+                    case 3:
+                        YellowFinal.GetComponent<SpriteRenderer>().sprite = defaultButtonImages[3];
+                        break;
+                }
+            }
+        }
+
         // A bit stupid way to implement co op but whatever
-        if (isCoop && ((int)Time.time % 5 == 0)) {
+        if (isCoop && ((int)Time.time % 20 == 0)) {
             if (!locked) {
                 locked = true;
                 playerTurn = (playerTurn == 1) ? 2 : 1;
                 this.playerIndicator.text = "Player " + playerTurn;
-                this.background.GetComponent<SpriteRenderer>().color = (playerTurn == 1) ? new Color(77, 85, 101, 255) : new Color(124, 156, 130, 255);
+                this.background.GetComponent<SpriteRenderer>().color = (playerTurn == 1) ? new Color(77f / 255f, 85 / 255f, 101f / 255f, 1f) : new Color(124f / 255f, 156f / 255f, 130f / 255f, 1f);
                 Debug.Log("Turn changing");
             }
-        } else if ((int)Time.time % 5 != 0) {
+        } else if ((int)Time.time % 10 != 0) {
             locked = false;
         }
     }
