@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.PointerEventData;
 
 public class ButtonController : MonoBehaviour
 {
@@ -28,13 +29,15 @@ public class ButtonController : MonoBehaviour
                         if (options[inputButton - 1].GetComponent<Option>().isCorrect)
                         {
 
-                            QuizManager.instance.correct();
-
+                            //QuizManager.instance.correct();
+                            //QuizManager.instance.score(1);
+                            QuizManager.instance.playerselect(1, inputButton);
                         }
                         else
                         {
-
-                            QuizManager.instance.wrong();
+                            //QuizManager.instance.wrong();
+                            //QuizManager.instance.score(2);
+                            QuizManager.instance.playerselect(1, inputButton);
 
                         }
                         // do more stuff
@@ -43,13 +46,14 @@ public class ButtonController : MonoBehaviour
                         if (options[inputButton - 1].GetComponent<Option>().isCorrect)
                         {
 
-                            QuizManager.instance.correct();
-
+                            //QuizManager.instance.correct();
+                            QuizManager.instance.playerselect(2, inputButton);
                         }
                         else
                         {
 
-                            QuizManager.instance.wrong();
+                            //QuizManager.instance.wrong();
+                            QuizManager.instance.playerselect(2, inputButton);
 
                         }
                         // do more stuff
@@ -91,11 +95,14 @@ public class ButtonController : MonoBehaviour
             if (options[inputIndex].GetComponent<Option>().isCorrect)
             {
 
-                QuizManager.instance.correct();
+                //QuizManager.instance.correct();
+                //QuizManager.instance.score(1);
+                QuizManager.instance.playerselect(1, inputIndex);
             }
             else
             {
-                QuizManager.instance.wrong();
+                //QuizManager.instance.wrong();
+                QuizManager.instance.playerselect(1, inputIndex);
             }
         }
     }
