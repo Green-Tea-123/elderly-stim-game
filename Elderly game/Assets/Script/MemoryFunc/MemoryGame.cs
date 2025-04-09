@@ -23,6 +23,11 @@ public class MemoryGame : MonoBehaviour
     public List<float> yaxis= new List<float>();
     public List<float> xaxis = new List<float>();
     public int destoriedCount;
+    public bool isQnUpdated;
+
+    public bool isCoop;
+    public int optionpickplayer1;
+    public int optionpickplayer2;
 
     [Header("Animal prefebs")]
     public GameObject dog;
@@ -46,7 +51,7 @@ public class MemoryGame : MonoBehaviour
     {"N", "cow"},
     {"D", "dog"},
     {"F", "donkey"},
-    {"G", "duck"},
+    {"X", "duck"},
     {"E", "elephant"},
     {"H", "frog"},
     {"G", "goat"},
@@ -55,7 +60,7 @@ public class MemoryGame : MonoBehaviour
     {"M", "monkey"},
     {"P", "pig"},
     {"R", "rooster"},
-    {"M", "sheep"}
+    {"V", "sheep"}
     };
 
     public static Dictionary<char,int> appearing = new Dictionary<char, int>(){
@@ -63,9 +68,9 @@ public class MemoryGame : MonoBehaviour
 
     [Header("UIUX")]
     public GameObject quizpage;
+    public GameObject qns;
+    public GameObject qnSprite;
     public GameObject[] options;
-
-
 
 
 
@@ -91,9 +96,13 @@ public class MemoryGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (destoriedCount == lvlset.Length)
+        if (destoriedCount == lvlset.Length && ! quizpage.activeSelf)
         {
             quizpage.SetActive(true);
+        }
+
+        if (quizpage.activeSelf) {
+
         }
     }
 
@@ -119,7 +128,7 @@ public class MemoryGame : MonoBehaviour
             if (c == 'F') {
                 GameObject donkeyz = Instantiate(donkey, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), donkey.transform.rotation);
             }
-            if (c == 'G') {
+            if (c == 'X') {
                 GameObject duckz = Instantiate(duck, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), duck.transform.rotation);
             }
             if (c == 'E') {
@@ -146,7 +155,7 @@ public class MemoryGame : MonoBehaviour
             if (c == 'R') {
                 GameObject roosterz = Instantiate(rooster, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), rooster.transform.rotation);
             }
-            if (c == 'M') {
+            if (c == 'V') {
                 GameObject sheepz = Instantiate(sheep, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), sheep.transform.rotation);
             }
     };
@@ -170,6 +179,32 @@ public class MemoryGame : MonoBehaviour
             {
                 appearing[qnlist[i]] = 1;
             }
+        }
+    }
+
+    public void playerselect(int id,int optionpick)
+    {
+        if (id == 1)
+        {
+            for (int i = 0; i < options.Length; i++)
+            {
+                options[i].transform.Find("Player1").GetComponent<UnityEngine.UI.Image>().enabled = false;
+                options[i].transform.Find("Player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+            }
+            options[optionpick].transform.Find("Player1").GetComponent<UnityEngine.UI.Image>().enabled = true;
+            options[optionpick].transform.Find("Player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+            optionpickplayer1 = optionpick;
+        }
+        else
+        {
+            for (int i = 0; i < options.Length; i++)
+            {
+                options[i].transform.Find("Player2").GetComponent<UnityEngine.UI.Image>().enabled = false;
+                options[i].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+            }
+            options[optionpick].transform.Find("Player2").GetComponent<UnityEngine.UI.Image>().enabled = true;
+            options[optionpick].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+            optionpickplayer2 = optionpick;
         }
     }
 }
