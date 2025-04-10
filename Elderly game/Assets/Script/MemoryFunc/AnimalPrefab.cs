@@ -9,7 +9,6 @@ public class AnimalPrefab : MonoBehaviour
     public bool hasStart = false;
     public float initialPos;
     public bool musicPlay = false;
-    public int destoriedCount;
     void Start()
     {
         moveSpeed = moveSpeed / MemoryGame.instance.speed;
@@ -28,8 +27,9 @@ public class AnimalPrefab : MonoBehaviour
         {
             if (gameObject.transform.position.x < -10)
             {
-                gameObject.SetActive(false);
                 MemoryGame.instance.addDestoried();
+                gameObject.SetActive(false);
+                
             }
             else
             {
@@ -40,6 +40,7 @@ public class AnimalPrefab : MonoBehaviour
         {
             if (gameObject.transform.position.x > 10)
             {
+                MemoryGame.instance.addDestoried();
                 gameObject.SetActive(false);
                
             }

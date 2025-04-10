@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
+using System;
+
 
 
 public class MemoryGame : MonoBehaviour
@@ -28,6 +30,8 @@ public class MemoryGame : MonoBehaviour
     public bool isCoop;
     public int optionpickplayer1;
     public int optionpickplayer2;
+    public GameObject qnPanel;
+    public GameObject qnPanel2;
 
     [Header("Animal prefebs")]
     public GameObject dog;
@@ -62,15 +66,37 @@ public class MemoryGame : MonoBehaviour
     {"R", "rooster"},
     {"V", "sheep"}
     };
+    public static List<string> keyList = new List<string>(names.Keys)
+
+    public static Dictionary<string, string> prefebDict = new Dictionary<string, string>(){
+    {"C", "Cat"},
+    {"Q", "Chick"},
+    {"N", "Cow"},
+    {"D", "Dog"},
+    {"F", "Donkey"},
+    {"X", "Duck"},
+    {"E", "Elephant"},
+    {"H", "Frog"},
+    {"G", "Goat"},
+    {"L", "Lilpok"},
+    {"S", "Lion"},
+    {"M", "Monkey"},
+    {"P", "Pig"},
+    {"R", "Rooster"},
+    {"V", "Sheep"}
+    };
 
     public static Dictionary<char,int> appearing = new Dictionary<char, int>(){
     };
+
+    public static List<List<int>> qntype = new List<List<int>>();
 
     [Header("UIUX")]
     public GameObject quizpage;
     public GameObject qns;
     public GameObject qnSprite;
     public GameObject[] options;
+    public GameObject[] option2;
 
 
 
@@ -81,8 +107,15 @@ public class MemoryGame : MonoBehaviour
         instance = this;
         for (int i = 0; i < lvlset.Length; i++)
         {
-            yaxis.Add(Random.Range(yMin, yMax));
-            xaxis.Add(Random.Range(0, 2));
+            yaxis.Add(UnityEngine.Random.Range(yMin, yMax));
+            xaxis.Add(UnityEngine.Random.Range(0, 2));
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            List<int> qn = new List<int>() ;
+            qn.Add(UnityEngine.Random.Range(1,4));
+            qn.Add((UnityEngine.Random.Range(1,4)));
+            qntype.Add(qn);
         }
 
     }
@@ -102,6 +135,7 @@ public class MemoryGame : MonoBehaviour
         }
 
         if (quizpage.activeSelf) {
+            generateQuestion();
 
         }
     }
@@ -184,6 +218,7 @@ public class MemoryGame : MonoBehaviour
 
     public void playerselect(int id,int optionpick)
     {
+        if (options.activeSelf) {
         if (id == 1)
         {
             for (int i = 0; i < options.Length; i++)
@@ -206,5 +241,71 @@ public class MemoryGame : MonoBehaviour
             options[optionpick].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
             optionpickplayer2 = optionpick;
         }
+        } else if (option2.activeSelf) {
+            if (id == 1)
+        {
+            for (int i = 0; i < options.Length; i++)
+            {
+                option2[i].transform.Find("Player1").GetComponent<UnityEngine.UI.Image>().enabled = false;
+                option2[i].transform.Find("Player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+            }
+            option2[optionpick].transform.Find("Player1").GetComponent<UnityEngine.UI.Image>().enabled = true;
+            option2[optionpick].transform.Find("Player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+            optionpickplayer1 = optionpick;
+        }
+        else
+        {
+            for (int i = 0; i < options.Length; i++)
+            {
+                options[i].transform.Find("Player2").GetComponent<UnityEngine.UI.Image>().enabled = false;
+                options[i].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+            }
+            options[optionpick].transform.Find("Player2").GetComponent<UnityEngine.UI.Image>().enabled = true;
+            options[optionpick].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+            optionpickplayer2 = optionpick;
+        }
     }
+    
+    void generateQuestion() {
+        string reLoad = "Prefab/Guess who i am/";
+        if (qntype.Count != 0) {
+            List<int> qn = qntype[0]; 
+            qntype.Remove(qn);
+            switch (qn[0])
+            {
+                case 1:
+                qnPanel.SetActive(true);
+                GameObject targetGameObject = Resources.Load<GameObject>(reLoad+prefebDict[lvlset[qn[1]].ToString().ToUpper()]);
+                Instantiate(targetGameObject,new Vector3(qnPanel.transform.position.x,qnPanel.transform.position.y,0),targetGameObject.transform.rotation);
+                qnPanel.transform.Find("QnText").GetComponent<TMP_Text>().text = "How many " + names[lvlset[qn[1]].ToString().ToUpper()] +" are present";
+                break;
+
+                case 2:
+                string qnNew = lvlset;
+                if (qnNew.Length < 4) {
+                    for (int i = qnNew.Length, i<4, i++) {
+                        Random rand = new Random;
+                        string additionalQn = keyList[rand.Next(keyList.count)];
+                        if (!qnNew.Contains(additionalQn)) {
+                            qnNew = qnNew + additionalQn;
+                        }
+                    }
+                } else {
+                    for qnNew
+                }
+                GameObject targetGameObject = Resources.Load<GameObject>(reLoad+prefebDict[lvlset[qn[1]].ToString().ToUpper()]);
+                Instantiate(targetGameObject,new Vector3(qnPanel.transform.position.x,qnPanel.transform.position.y,0),targetGameObject.transform.rotation);
+                qnPanel.transform.Find("QnText").GetComponent<TMP_Text>().text = "Which is the first animal";
+
+
+
+                break
+
+
+            }
+        }
+    }
+
+
+
 }
