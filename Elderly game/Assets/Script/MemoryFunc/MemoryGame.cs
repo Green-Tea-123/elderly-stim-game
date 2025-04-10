@@ -343,7 +343,7 @@ public class MemoryGame : MonoBehaviour
                     {
                         while (qnNew.Length < req)
                         {
-                            string additionalQn = keyList[Random.Range(0, keyList.Count + 1)];
+                            string additionalQn = keyList[Random.Range(0, keyList.Count)];
                             if (!qnNew.Contains(additionalQn))
                             {
                                 qnNew = qnNew + additionalQn;
@@ -365,7 +365,7 @@ public class MemoryGame : MonoBehaviour
                         while (qnNew.Length< req)
                         {
 
-                            string additionalQn = lvlset[Random.Range(0, keyList.Count)].ToString();
+                            string additionalQn = lvlset[Random.Range(0, lvlset.Count)].ToString();
                             if (!qnNew.Contains(additionalQn))
                             {
                                 qnNew = qnNew + additionalQn;
@@ -389,7 +389,7 @@ public class MemoryGame : MonoBehaviour
                         GameObject targets = Resources.Load<GameObject>(reLoad + prefebDict[ansSwq[i].ToString().ToUpper()]);
                    
                         GameObject target2 = Instantiate(targets, new Vector3(option2[i].transform.position.x, option2[i].transform.position.y, 0), targets.transform.rotation);
-                        target2.transform.SetParent(option2[i].transform, false);
+                        /*target2.transform.SetParent(option2[i].transform, false);*/
 
 
                         if (ansSwq[i] == lvlset[0])
