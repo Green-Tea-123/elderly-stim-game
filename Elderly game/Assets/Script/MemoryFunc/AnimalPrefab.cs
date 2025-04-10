@@ -9,6 +9,7 @@ public class AnimalPrefab : MonoBehaviour
     public bool hasStart = false;
     public float initialPos;
     public bool musicPlay = false;
+    public bool canMove = true;
     void Start()
     {
         moveSpeed = moveSpeed / MemoryGame.instance.speed;
@@ -52,7 +53,7 @@ public class AnimalPrefab : MonoBehaviour
 
 
 
-        if (!hasStart)
+        if (!hasStart )
         {
             if (Input.anyKey)
            
@@ -61,12 +62,12 @@ public class AnimalPrefab : MonoBehaviour
         }
         else
         {
-            if (initialPos < 0)
+            if (initialPos < 0 && canMove)
             {
                 gameObject.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0f, 0f);
                 
             }
-            else
+            else if (initialPos > 0 && canMove)
             {
                 gameObject.transform.position += new Vector3(-moveSpeed * Time.deltaTime, 0f, 0f);
             }
@@ -103,4 +104,8 @@ public class AnimalPrefab : MonoBehaviour
         this.initialPos = gameObject.transform.position.x;
     }
     
+    public void cantMove()
+    {
+        this.canMove = false;
+    }
 }

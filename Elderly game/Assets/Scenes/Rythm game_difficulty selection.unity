@@ -2715,7 +2715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafd5be3cfd113e4daf5fffeba28a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Rythmgame_medium
+  nextSceneName: Rythmgame_mediumlvl
   button: {fileID: 782139490}
 --- !u!1 &793758770
 GameObject:
@@ -6229,7 +6229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafd5be3cfd113e4daf5fffeba28a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Rythmgame_slow
+  nextSceneName: Rythmgame_slowlvl
   button: {fileID: 2020219019}
 --- !u!1 &2052153837
 GameObject:

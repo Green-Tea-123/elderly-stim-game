@@ -1669,6 +1669,8 @@ MonoBehaviour:
   optionpickplayer1: 0
   optionpickplayer2: 0
   qnPanel: {fileID: 20012471}
+  qnPanel2: {fileID: 1743464101}
+  qnGenerated: 0
   dog: {fileID: 1524985065923944821, guid: 1e7b655421e31a54da54e1104a5cc64c, type: 3}
   cat: {fileID: 6566024338470761466, guid: e60f2b4d96f06b342b0345d8fd4c1d25, type: 3}
   chick: {fileID: 5400762942012277632, guid: c3426576c7656e2409689035eb3589e5, type: 3}
@@ -1687,7 +1689,16 @@ MonoBehaviour:
   quizpage: {fileID: 1338408445}
   qns: {fileID: 20012471}
   qnSprite: {fileID: 20012471}
-  options: []
+  options:
+  - {fileID: 1606149706}
+  - {fileID: 1878360488}
+  - {fileID: 1621051757}
+  - {fileID: 1198189044}
+  option2:
+  - {fileID: 659510991}
+  - {fileID: 1454029443}
+  - {fileID: 1685688159}
+  - {fileID: 577178529}
   lvlset: clp
 --- !u!4 &180984018
 Transform:
@@ -7799,7 +7810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1338408446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10547,7 +10558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1743464102
 RectTransform:
   m_ObjectHideFlags: 0

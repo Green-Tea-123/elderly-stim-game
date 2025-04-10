@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Rythm game_medium/Rythmgame_medium.unity
     guid: 471ed20046dfb6d49a68845d90745beb
   - enabled: 1
-    path: Assets/Scenes/rythm game_slow/Rythmgame_slow.unity
+    path: Assets/Scenes/rythm game_slow/Rythmgame_slowlvl.unity
     guid: 65e2bb78de256114bbee60b39e9effcc
   - enabled: 1
     path: Assets/Scenes/Rythm game_fast/Rythmgame_fastlvl.unity
@@ -35,4 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rythm game_fast/Rythmgame_fast9.unity
     guid: b381930ce083789428d89abc1d9d12eb
+  - enabled: 1
+    path: Assets/Scenes/rythm game_slow/Rythmgame_slow8.unity
+    guid: 23143fce6ff652349860ec80fee9b2b6
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_mediumlvl.unity
+    guid: 1f377565f04c7634e815443f0307c829
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_medium8.unity
+    guid: aac7e85eab3d75848ad937a302003e40
   m_configObjects: {}

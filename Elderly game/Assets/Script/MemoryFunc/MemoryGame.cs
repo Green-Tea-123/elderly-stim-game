@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
-using System;
 
 
 
@@ -22,7 +21,7 @@ public class MemoryGame : MonoBehaviour
     public float yMax = -3;
 
     public float speed = 60;
-    public List<float> yaxis= new List<float>();
+    public List<float> yaxis = new List<float>();
     public List<float> xaxis = new List<float>();
     public int destoriedCount;
     public bool isQnUpdated;
@@ -32,6 +31,7 @@ public class MemoryGame : MonoBehaviour
     public int optionpickplayer2;
     public GameObject qnPanel;
     public GameObject qnPanel2;
+    public bool qnGenerated = false;
 
     [Header("Animal prefebs")]
     public GameObject dog;
@@ -66,7 +66,7 @@ public class MemoryGame : MonoBehaviour
     {"R", "rooster"},
     {"V", "sheep"}
     };
-    public static List<string> keyList = new List<string>(names.Keys)
+    public static List<string> keyList = new List<string>(names.Keys);
 
     public static Dictionary<string, string> prefebDict = new Dictionary<string, string>(){
     {"C", "Cat"},
@@ -86,7 +86,8 @@ public class MemoryGame : MonoBehaviour
     {"V", "Sheep"}
     };
 
-    public static Dictionary<char,int> appearing = new Dictionary<char, int>(){
+    public static Dictionary<char, int> appearing = new Dictionary<char, int>()
+    {
     };
 
     public static List<List<int>> qntype = new List<List<int>>();
@@ -103,7 +104,8 @@ public class MemoryGame : MonoBehaviour
 
 
     public string lvlset;
-    void Awake() {
+    void Awake()
+    {
         instance = this;
         for (int i = 0; i < lvlset.Length; i++)
         {
@@ -112,9 +114,11 @@ public class MemoryGame : MonoBehaviour
         }
         for (int i = 0; i < 3; i++)
         {
-            List<int> qn = new List<int>() ;
-            qn.Add(UnityEngine.Random.Range(1,4));
-            qn.Add((UnityEngine.Random.Range(1,4)));
+            List<int> qn = new List<int>();
+            /*qn.Add(UnityEngine.Random.Range(1, 4));
+            qn.Add((UnityEngine.Random.Range(1, 4)));*/
+            qn.Add(2);
+            qn.Add(2);
             qntype.Add(qn);
         }
 
@@ -129,12 +133,13 @@ public class MemoryGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (destoriedCount == lvlset.Length && ! quizpage.activeSelf)
+        if (destoriedCount == lvlset.Length && !quizpage.activeSelf)
         {
             quizpage.SetActive(true);
         }
 
-        if (quizpage.activeSelf) {
+        if (quizpage.activeSelf && !qnGenerated)
+        {
             generateQuestion();
 
         }
@@ -144,57 +149,72 @@ public class MemoryGame : MonoBehaviour
     {
         string b = animals.ToUpper();
         int alength = animals.Length;
-        for (int i = 0; i < alength ; i++)
+        for (int i = 0; i < alength; i++)
         {
             char c = b[i];
-            if (c == 'C') {
-                GameObject catz = Instantiate(cat, new Vector3((this.xaxis[i])<1? -20 - i*20 : 25 + i*20, this.yaxis[i],0), cat.transform.rotation);
+            if (c == 'C')
+            {
+                GameObject catz = Instantiate(cat, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), cat.transform.rotation);
             }
-            if (c == 'Q') {
+            if (c == 'Q')
+            {
                 GameObject chickz = Instantiate(chick, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), chick.transform.rotation);
             }
-            if (c == 'N') {
+            if (c == 'N')
+            {
                 GameObject cowz = Instantiate(cow, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), cow.transform.rotation);
             }
-            if (c == 'D') {
+            if (c == 'D')
+            {
                 GameObject dogz = Instantiate(dog, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), dog.transform.rotation);
             }
-            if (c == 'F') {
+            if (c == 'F')
+            {
                 GameObject donkeyz = Instantiate(donkey, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), donkey.transform.rotation);
             }
-            if (c == 'X') {
+            if (c == 'X')
+            {
                 GameObject duckz = Instantiate(duck, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), duck.transform.rotation);
             }
-            if (c == 'E') {
+            if (c == 'E')
+            {
                 GameObject elephantz = Instantiate(elephant, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), elephant.transform.rotation);
             }
-            if (c == 'H') {
+            if (c == 'H')
+            {
                 GameObject frogz = Instantiate(frog, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), frog.transform.rotation);
             }
-            if (c == 'G') {
+            if (c == 'G')
+            {
                 GameObject goatZ = Instantiate(goat, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), goat.transform.rotation);
             }
-            if (c == 'L') {
+            if (c == 'L')
+            {
                 GameObject Lilpokz = Instantiate(lilpok, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), lilpok.transform.rotation);
             }
-            if (c == 'S') {
+            if (c == 'S')
+            {
                 GameObject lionz = Instantiate(lion, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), lion.transform.rotation);
             }
-            if (c == 'M') {
+            if (c == 'M')
+            {
                 GameObject monkeyz = Instantiate(monkey, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), monkey.transform.rotation);
             }
-            if (c == 'P') {
+            if (c == 'P')
+            {
                 GameObject pigz = Instantiate(pig, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), pig.transform.rotation);
             }
-            if (c == 'R') {
+            if (c == 'R')
+            {
                 GameObject roosterz = Instantiate(rooster, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), rooster.transform.rotation);
             }
-            if (c == 'V') {
+            if (c == 'V')
+            {
                 GameObject sheepz = Instantiate(sheep, new Vector3((this.xaxis[i]) < 1 ? -20 - i * 20 : 25 + i * 20, this.yaxis[i], 0), sheep.transform.rotation);
             }
-    };
+        };
 
-    
+
 
     }
     public void addDestoried()
@@ -209,103 +229,250 @@ public class MemoryGame : MonoBehaviour
             if (appearing.ContainsKey(qnlist[i]))
             {
                 appearing[qnlist[i]]++;
-            } else
+            }
+            else
             {
                 appearing[qnlist[i]] = 1;
             }
         }
     }
 
-    public void playerselect(int id,int optionpick)
+    public void playerselect(int id, int optionpick)
     {
-        if (options.activeSelf) {
-        if (id == 1)
+        if (qnPanel.activeSelf)
         {
-            for (int i = 0; i < options.Length; i++)
-            {
-                options[i].transform.Find("Player1").GetComponent<UnityEngine.UI.Image>().enabled = false;
-                options[i].transform.Find("Player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
-            }
-            options[optionpick].transform.Find("Player1").GetComponent<UnityEngine.UI.Image>().enabled = true;
-            options[optionpick].transform.Find("Player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
-            optionpickplayer1 = optionpick;
-        }
-        else
-        {
-            for (int i = 0; i < options.Length; i++)
-            {
-                options[i].transform.Find("Player2").GetComponent<UnityEngine.UI.Image>().enabled = false;
-                options[i].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
-            }
-            options[optionpick].transform.Find("Player2").GetComponent<UnityEngine.UI.Image>().enabled = true;
-            options[optionpick].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
-            optionpickplayer2 = optionpick;
-        }
-        } else if (option2.activeSelf) {
             if (id == 1)
-        {
-            for (int i = 0; i < options.Length; i++)
             {
-                option2[i].transform.Find("Player1").GetComponent<UnityEngine.UI.Image>().enabled = false;
-                option2[i].transform.Find("Player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                for (int i = 0; i < options.Length; i++)
+                {
+                    options[i].transform.Find("player1").GetComponent<UnityEngine.UI.Image>().enabled = false;
+                    options[i].transform.Find("player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                }
+                options[optionpick].transform.Find("player1").GetComponent<UnityEngine.UI.Image>().enabled = true;
+                options[optionpick].transform.Find("player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                optionpickplayer1 = optionpick;
             }
-            option2[optionpick].transform.Find("Player1").GetComponent<UnityEngine.UI.Image>().enabled = true;
-            option2[optionpick].transform.Find("Player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
-            optionpickplayer1 = optionpick;
+            else
+            {
+                for (int i = 0; i < options.Length; i++)
+                {
+                    options[i].transform.Find("player2").GetComponent<UnityEngine.UI.Image>().enabled = false;
+                    options[i].transform.Find("player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                }
+                options[optionpick].transform.Find("player2").GetComponent<UnityEngine.UI.Image>().enabled = true;
+                options[optionpick].transform.Find("player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                optionpickplayer2 = optionpick;
+            }
         }
-        else
+        else if (qnPanel2.activeSelf)
         {
-            for (int i = 0; i < options.Length; i++)
+            if (id == 1)
             {
-                options[i].transform.Find("Player2").GetComponent<UnityEngine.UI.Image>().enabled = false;
-                options[i].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                for (int i = 0; i < option2.Length; i++)
+                {
+                    option2[i].transform.Find("player1").GetComponent<UnityEngine.UI.Image>().enabled = false;
+                    option2[i].transform.Find("player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                }
+                option2[optionpick].transform.Find("player1").GetComponent<UnityEngine.UI.Image>().enabled = true;
+                option2[optionpick].transform.Find("player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                optionpickplayer1 = optionpick;
             }
-            options[optionpick].transform.Find("Player2").GetComponent<UnityEngine.UI.Image>().enabled = true;
-            options[optionpick].transform.Find("Player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
-            optionpickplayer2 = optionpick;
+            else
+            {
+                for (int i = 0; i < option2.Length; i++)
+                {
+                    option2[i].transform.Find("player2").GetComponent<UnityEngine.UI.Image>().enabled = false;
+                    option2[i].transform.Find("player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                }
+                option2[optionpick].transform.Find("player2").GetComponent<UnityEngine.UI.Image>().enabled = true;
+                option2[optionpick].transform.Find("player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                optionpickplayer2 = optionpick;
+            }
         }
     }
-    
-    void generateQuestion() {
-        string reLoad = "Prefab/Guess who i am/";
-        if (qntype.Count != 0) {
-            List<int> qn = qntype[0]; 
+    void generateQuestion()
+    {
+        qnGenerated = true;
+        string reLoad = "AnimalSprite/";
+        if (qntype.Count != 0)
+        {
+            List<int> qn = qntype[0];
             qntype.Remove(qn);
+            int req = 4;
+            string qnNew = lvlset;
+            string ansSwq = "";
+            Debug.Log(qn);
+            Debug.Log(qn[0]);
+            Debug.Log(qn[1]);
             switch (qn[0])
             {
                 case 1:
-                qnPanel.SetActive(true);
-                GameObject targetGameObject = Resources.Load<GameObject>(reLoad+prefebDict[lvlset[qn[1]].ToString().ToUpper()]);
-                Instantiate(targetGameObject,new Vector3(qnPanel.transform.position.x,qnPanel.transform.position.y,0),targetGameObject.transform.rotation);
-                qnPanel.transform.Find("QnText").GetComponent<TMP_Text>().text = "How many " + names[lvlset[qn[1]].ToString().ToUpper()] +" are present";
-                break;
+                    qnPanel.SetActive(true);
+                    GameObject targetGameObject = Resources.Load<GameObject>(reLoad + prefebDict[lvlset[qn[1]].ToString().ToUpper()]);
+                    Instantiate(targetGameObject, new Vector3(qnPanel.transform.position.x, qnPanel.transform.position.y, 0), targetGameObject.transform.rotation);
+                    qnPanel.transform.Find("QnText").GetComponent<TMP_Text>().text = "How many " + names[lvlset[qn[1]].ToString().ToUpper()] + " are present";
+                    ansSwq= appearing[lvlset[qn[1]]].ToString();
+                    while (ansSwq.Length < req)
+                    {
+                        string additionalQn = Random.Range(0,lvlset.Length+3).ToString();
+                        if (!ansSwq.Contains(additionalQn))
+                        {
+                            ansSwq = ansSwq + additionalQn;
+                        }
+ 
+                    }
+                    for (int i = 0; i < options.Length; i++)
+                    {
+                        options[i].GetComponent<Option>().isCorrect = false;
+                        options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = ansSwq[i].ToString();
+
+                        if (options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text == appearing[lvlset[qn[1]]].ToString()) 
+                        {
+                            options[i].GetComponent<Option>().isCorrect = true;
+
+                        }
+
+                    }
+
+
+                    break;
 
                 case 2:
-                string qnNew = lvlset;
-                if (qnNew.Length < 4) {
-                    for (int i = qnNew.Length, i<4, i++) {
-                        Random rand = new Random;
-                        string additionalQn = keyList[rand.Next(keyList.count)];
-                        if (!qnNew.Contains(additionalQn)) {
-                            qnNew = qnNew + additionalQn;
+                    qnPanel2.SetActive(true);
+                    if (qnNew.Length < 4)
+                    {
+                        while (qnNew.Length < req)
+                        {
+                            string additionalQn = keyList[Random.Range(0, keyList.Count + 1)];
+                            if (!qnNew.Contains(additionalQn))
+                            {
+                                qnNew = qnNew + additionalQn;
+                            }
+                        }
+                        while (ansSwq.Length<req)
+                        {
+                            string additionalQn = qnNew[Random.Range(0, qnNew.Length)].ToString();
+                            if (!ansSwq.Contains(additionalQn))
+                            {
+                                ansSwq = ansSwq + additionalQn;
+                            }
+                            
                         }
                     }
-                } else {
-                    for qnNew
-                }
-                GameObject targetGameObject = Resources.Load<GameObject>(reLoad+prefebDict[lvlset[qn[1]].ToString().ToUpper()]);
-                Instantiate(targetGameObject,new Vector3(qnPanel.transform.position.x,qnPanel.transform.position.y,0),targetGameObject.transform.rotation);
-                qnPanel.transform.Find("QnText").GetComponent<TMP_Text>().text = "Which is the first animal";
+                    else
+                    {
+                        qnNew = lvlset[0].ToString();
+                        while (qnNew.Length< req)
+                        {
+
+                            string additionalQn = lvlset[Random.Range(0, keyList.Count)].ToString();
+                            if (!qnNew.Contains(additionalQn))
+                            {
+                                qnNew = qnNew + additionalQn;
+                            }
+                            
+                        }
+                        while (ansSwq.Length< req)
+                        {
+                            string additionalQn = qnNew[Random.Range(0, qnNew.Length + 1)].ToString();
+                            if (!ansSwq.Contains(additionalQn))
+                            {
+                                ansSwq = ansSwq + additionalQn;
+                            }
+           
+                        }
+                    }
+                    qnPanel2.transform.Find("QnText").GetComponent<TMP_Text>().text = "Which is the first animal";
+                    for (int i = 0; i < option2.Length; i++)
+                    {
+                        option2[i].GetComponent<Option>().isCorrect = false;
+                        GameObject targets = Resources.Load<GameObject>(reLoad + prefebDict[ansSwq[i].ToString().ToUpper()]);
+                   
+                        GameObject target2 = Instantiate(targets, new Vector3(option2[i].transform.position.x, option2[i].transform.position.y, 0), targets.transform.rotation);
+                        target2.transform.SetParent(option2[i].transform, false);
+
+
+                        if (ansSwq[i] == lvlset[0])
+                        {
+                            option2[i].GetComponent<Option>().isCorrect = true;
+
+                        }
+
+                    }
+                    break;
+
+                case 3:
+                    qnPanel2.SetActive(true);
+                    if (qnNew.Length < 4)
+                    {
+                        while (qnNew.Length< req)
+                        {
+                            string additionalQn = keyList[Random.Range(0, keyList.Count )];
+                            if (!qnNew.Contains(additionalQn))
+                            {
+                                qnNew = qnNew + additionalQn;
+                            }
+                        }
+                        while (ansSwq.Length < req)
+                        {
+                            string additionalQn = qnNew[Random.Range(0, qnNew.Length )].ToString();
+                            if (!ansSwq.Contains(additionalQn))
+                            {
+                                ansSwq = ansSwq + additionalQn;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        qnNew = lvlset[0].ToString();
+                        while (qnNew.Length< 4)
+                        {
+
+                            string additionalQn = lvlset[Random.Range(0, keyList.Count)].ToString();
+                            if (!qnNew.Contains(additionalQn))
+                            {
+                                qnNew = qnNew + additionalQn;
+                            }
+                        }
+                        while (ansSwq.Length < req)
+                        {
+                            string additionalQn = qnNew[Random.Range(0, qnNew.Length )].ToString();
+                            if (!ansSwq.Contains(additionalQn))
+                            {
+                                ansSwq = ansSwq + additionalQn;
+                            }
+                        }
+                    }
+                    qnPanel2.transform.Find("QnText").GetComponent<TMP_Text>().text = "Which is the last animal";
+                    for (int i = 0; i < option2.Length; i++)
+                    {
+                        option2[i].GetComponent<Option>().isCorrect = false;
+                        GameObject targets = Resources.Load<GameObject>(reLoad + prefebDict[ansSwq[i].ToString().ToUpper()]);
+                        Instantiate(targets, new Vector3(option2[i].transform.position.x, option2[i].transform.position.y, 0), targets.transform.rotation);
+
+
+                        if (ansSwq[i] == lvlset[lvlset.Length-1])
+                        {
+                            option2[i].GetComponent<Option>().isCorrect = true;
+
+                        }
+
+                    }
+
+
+                    break;
 
 
 
-                break
+
 
 
             }
         }
     }
 
-
-
 }
+
+
+
+
