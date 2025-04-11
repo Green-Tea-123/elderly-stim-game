@@ -37,6 +37,8 @@ public class MemoryGame : MonoBehaviour
     private bool gamestatus = false;
     public int score1 = 0;
     public int score2 = 0;
+    public int correctAns;
+    public GameObject clonez;
 
     [Header("Animal prefebs")]
     public GameObject dog;
@@ -129,8 +131,8 @@ public class MemoryGame : MonoBehaviour
             List<int> qn = new List<int>();
             /*qn.Add(UnityEngine.Random.Range(1, 4));
             qn.Add((UnityEngine.Random.Range(1, 4)));*/
-            qn.Add(1);
             qn.Add(2);
+            qn.Add(0);
             qntype.Add(qn);
         }
 
@@ -263,22 +265,19 @@ public class MemoryGame : MonoBehaviour
             {
                 for (int i = 0; i < options.Length; i++)
                 {
-                    options[i].transform.Find("player1").GetComponent<UnityEngine.UI.Image>().enabled = false;
-                    options[i].transform.Find("player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                    options[i].transform.Find("player1").gameObject.SetActive(false);
+                    
                 }
-                options[optionpick].transform.Find("player1").GetComponent<UnityEngine.UI.Image>().enabled = true;
-                options[optionpick].transform.Find("player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                options[optionpick].transform.Find("player1").gameObject.SetActive(true);
                 optionpickplayer1 = optionpick;
             }
             else
             {
                 for (int i = 0; i < options.Length; i++)
                 {
-                    options[i].transform.Find("player2").GetComponent<UnityEngine.UI.Image>().enabled = false;
-                    options[i].transform.Find("player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                    options[i].transform.Find("player2").gameObject.SetActive(false);
                 }
-                options[optionpick].transform.Find("player2").GetComponent<UnityEngine.UI.Image>().enabled = true;
-                options[optionpick].transform.Find("player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                options[optionpick].transform.Find("player2").gameObject.SetActive(true);
                 optionpickplayer2 = optionpick;
             }
         }
@@ -288,22 +287,18 @@ public class MemoryGame : MonoBehaviour
             {
                 for (int i = 0; i < option2.Length; i++)
                 {
-                    option2[i].transform.Find("player1").GetComponent<UnityEngine.UI.Image>().enabled = false;
-                    option2[i].transform.Find("player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                    option2[i].transform.Find("player1").gameObject.SetActive(false);
                 }
-                option2[optionpick].transform.Find("player1").GetComponent<UnityEngine.UI.Image>().enabled = true;
-                option2[optionpick].transform.Find("player1").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                option2[optionpick].transform.Find("player1").gameObject.SetActive(true);
                 optionpickplayer1 = optionpick;
             }
             else
             {
                 for (int i = 0; i < option2.Length; i++)
                 {
-                    option2[i].transform.Find("player2").GetComponent<UnityEngine.UI.Image>().enabled = false;
-                    option2[i].transform.Find("player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                    option2[i].transform.Find("player2").gameObject.SetActive(false);
                 }
-                option2[optionpick].transform.Find("player2").GetComponent<UnityEngine.UI.Image>().enabled = true;
-                option2[optionpick].transform.Find("player2").GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                option2[optionpick].transform.Find("player2").gameObject.SetActive(true);
                 optionpickplayer2 = optionpick;
             }
         }
@@ -325,6 +320,7 @@ public class MemoryGame : MonoBehaviour
             switch (qn[0])
             {
                 case 1:
+
                     qnPanel.SetActive(true);
                     GameObject targetGameObject = Resources.Load<GameObject>(reLoad + prefebDict[lvlset[qn[1]].ToString().ToUpper()]);
                     Instantiate(targetGameObject, new Vector3(qnPanel.transform.position.x, qnPanel.transform.position.y, 0), targetGameObject.transform.rotation);
@@ -341,10 +337,16 @@ public class MemoryGame : MonoBehaviour
                     }
                     for (int i = 0; i < options.Length; i++)
                     {
+                        options[i].transform.Find("correct").gameObject.SetActive(false);
+                        options[i].transform.Find("wrong").gameObject.SetActive(false);
+                        options[i].transform.Find("player1").gameObject.SetActive(false);
+                        options[i].transform.Find("player2").gameObject.SetActive(false);
+                        options[i].transform.Find("RawImage").gameObject.SetActive(false);
+                        options[i].transform.Find("incorrect").gameObject.SetActive(false);
                         options[i].GetComponent<Option>().isCorrect = false;
                         options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = ansSwq[i].ToString();
 
-                        if (options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text == appearing[lvlset[qn[1]]].ToString()) 
+                        if (int.Parse(options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text) == appearing[lvlset[qn[1]]]) 
                         {
                             options[i].GetComponent<Option>().isCorrect = true;
 
@@ -414,17 +416,25 @@ public class MemoryGame : MonoBehaviour
                     qnPanel2.transform.Find("QnText").GetComponent<TMP_Text>().text = "Which is the first animal";
                     for (int i = 0; i < option2.Length; i++)
                     {
+                        option2[i].transform.Find("correct").gameObject.SetActive(false);
+                        option2[i].transform.Find("wrong").gameObject.SetActive(false);
+                        option2[i].transform.Find("player1").gameObject.SetActive(false);
+                        option2[i].transform.Find("player2").gameObject.SetActive(false);
+                        option2[i].transform.Find("RawImage").gameObject.SetActive(false);
+                        option2[i].transform.Find("incorrect").gameObject.SetActive(false);
                         option2[i].GetComponent<Option>().isCorrect = false;
                         GameObject targets = Resources.Load<GameObject>(reLoad + prefebDict[ansSwq[i].ToString().ToUpper()]);
                    
                         GameObject target2 = Instantiate(targets, new Vector3(option2[i].transform.position.x, option2[i].transform.position.y, 0), targets.transform.rotation);
+                        target2.transform.SetParent(clonez.transform,false);
                         /*target2.transform.SetParent(option2[i].transform, false);*/
 
 
                         if (ansSwq[i] == lvlset[0])
                         {
                             option2[i].GetComponent<Option>().isCorrect = true;
-
+                            correctAns = i;
+                            Debug.Log(i + "isCorrect");
                         }
 
                     }
@@ -487,6 +497,12 @@ public class MemoryGame : MonoBehaviour
                     qnPanel2.transform.Find("QnText").GetComponent<TMP_Text>().text = "Which is the last animal";
                     for (int i = 0; i < option2.Length; i++)
                     {
+                        option2[i].transform.Find("correct").gameObject.SetActive(false);
+                        option2[i].transform.Find("wrong").gameObject.SetActive(false);
+                        option2[i].transform.Find("player1").gameObject.SetActive(false);
+                        option2[i].transform.Find("player2").gameObject.SetActive(false);
+                        option2[i].transform.Find("RawImage").gameObject.SetActive(false);
+                        option2[i].transform.Find("incorrect").gameObject.SetActive(false);
                         option2[i].GetComponent<Option>().isCorrect = false;
                         GameObject targets = Resources.Load<GameObject>(reLoad + prefebDict[ansSwq[i].ToString().ToUpper()]);
                         Instantiate(targets, new Vector3(option2[i].transform.position.x, option2[i].transform.position.y, 0), targets.transform.rotation);
@@ -541,10 +557,12 @@ public class MemoryGame : MonoBehaviour
     }
     public void showanswer()
     {
+        if (options[0].activeSelf) {
         if (answerstatus == true)
         {
             showanswerbutton.SetActive(true);
             Debug.Log("player1 pick:" + optionpickplayer1);
+            Debug.Log("player2 pick:" + optionpickplayer2);
             if (options[optionpickplayer1].GetComponent<Option>().isCorrect && options[optionpickplayer2].GetComponent<Option>().isCorrect)
             {
                 correct();
@@ -571,6 +589,36 @@ public class MemoryGame : MonoBehaviour
             }
 
         }
+    } else if (option2[0].activeSelf) {
+        if (answerstatus == true) {
+            showanswerbutton.SetActive(true);
+            Debug.Log("player1 pick:" + optionpickplayer1);
+            Debug.Log("player2 pick:" + optionpickplayer2);
+            if (option2[optionpickplayer1].GetComponent<Option>().isCorrect && option2[optionpickplayer2].GetComponent<Option>().isCorrect)
+            {
+                correct();
+                score(1);
+                score(2);
+                answerstatus = false;
+            }
+            else if (option2[optionpickplayer1].GetComponent<Option>().isCorrect| optionpickplayer1 == correctAns)
+            {
+                correct();
+                score(1);
+                answerstatus = false;
+            }
+            else if (option2[optionpickplayer2].GetComponent<Option>().isCorrect| optionpickplayer2 == correctAns)
+            {
+                correct();
+                score(2);
+                answerstatus = false;
+            }
+            else
+            {
+                correct();
+                answerstatus = false;
+            }
+    }}
     }
 
     public void score(int id)
@@ -578,40 +626,42 @@ public class MemoryGame : MonoBehaviour
         if (id == 1)
         {
             score1++;
+            Debug.Log("player" + id+ "scored");
         }
         else
         {
             score2++;
+            Debug.Log("player" + id+ "scored");
         }
     }
 
 
     public void correct()
     {
-        int ansno = 0;
         if (qnPanel.activeSelf && qntype.Count >0)
         {
             for (int i = 0; i < options.Length; i++) {
-                options[i].transform.Find("correct").GetComponent<RawImage>().enabled = false;
-                options[i].transform.Find("incorrect").GetComponent<RawImage>().enabled = false;
+                options[i].transform.Find("RawImage").gameObject.SetActive(false);
+                options[i].transform.Find("incorrect").gameObject.SetActive(false);
                 if (options[i].GetComponent<Option>().isCorrect)
                 {
-                    options[i].transform.Find("correct").GetComponent<RawImage>().enabled = true;
-                    ansno = i;
+                    options[i].transform.Find("RawImage").gameObject.SetActive(true);
                 }
                 else
                 {
-                    options[i].transform.Find("incorrect").GetComponent<RawImage>().enabled = true;
+                    options[i].transform.Find("incorrect").gameObject.SetActive(true);
                 }
             }
         } else if(qnPanel.activeSelf && qntype.Count <= 0)
         {
             for (int i = 0; i < options.Length; i++)
             {
+                options[i].transform.Find("RawImage").gameObject.SetActive(false);
+                options[i].transform.Find("incorrect").gameObject.SetActive(false);
                 if (options[i].GetComponent<Option>().isCorrect)
                 {
-                    options[i].transform.Find("RawImage").GetComponent<RawImage>().enabled = true;
-                    options[i].transform.Find("correct").GetComponent<RawImage>().enabled = true;
+                    options[i].transform.Find("RawImage").gameObject.SetActive(true);
+                    options[i].transform.Find("correct").gameObject.SetActive(true);
                 }
             }
         }
@@ -619,26 +669,27 @@ public class MemoryGame : MonoBehaviour
         {
             for (int i = 0; i < options.Length; i++)
             {
-                option2[i].transform.Find("correct").GetComponent<RawImage>().enabled = false;
-                option2[i].transform.Find("incorrect").GetComponent<RawImage>().enabled = false;
+                option2[i].transform.Find("RawImage").gameObject.SetActive(false);
+                option2[i].transform.Find("incorrect").gameObject.SetActive(false);
                 if (option2[i].GetComponent<Option>().isCorrect)
                 {
-                    option2[i].transform.Find("correct").GetComponent<RawImage>().enabled = true;
-                    ansno = i;
+                    option2[i].transform.Find("RawImage").gameObject.SetActive(true);
                 }
                 else
                 {
-                    option2[i].transform.Find("incorrect").GetComponent<RawImage>().enabled = true;
+                    option2[i].transform.Find("incorrect").gameObject.SetActive(true);
                 }
             }
         } else if(qnPanel2.activeSelf && qntype.Count <= 0)
         {
             for (int i = 0; i < option2.Length; i++)
             {
+                option2[i].transform.Find("RawImage").gameObject.SetActive(false);
+                option2[i].transform.Find("incorrect").gameObject.SetActive(false);
                 if (option2[i].GetComponent<Option>().isCorrect)
                 {
-                    option2[i].transform.Find("RawImage").GetComponent<RawImage>().enabled = true;
-                    option2[i].transform.Find("correct").GetComponent<RawImage>().enabled = true;
+                    option2[i].transform.Find("RawImage").gameObject.SetActive(true);
+                    option2[i].transform.Find("incorrect").gameObject.SetActive(true);
                 }
             }
         }

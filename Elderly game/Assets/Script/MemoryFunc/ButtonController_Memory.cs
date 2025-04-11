@@ -9,6 +9,7 @@ using static UnityEngine.EventSystems.PointerEventData;
 public class ButtonController_Memory : MonoBehaviour
 {
     public GameObject[] options;
+    public GameObject[] option2;
 
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class ButtonController_Memory : MonoBehaviour
                 switch (controllerId)
                 {
                     case 1:
+                    if (options[0].activeSelf) {
                         if (options[inputButton - 1].GetComponent<Option>().isCorrect)
                         {
 
@@ -38,9 +40,24 @@ public class ButtonController_Memory : MonoBehaviour
                             MemoryGame.instance.playerselect(1, inputButton - 1);
 
                         }
+                    } else if(option2[0].activeSelf) {
+                        if (option2[inputButton - 1].GetComponent<Option>().isCorrect)
+                        {
+
+                          
+                            MemoryGame.instance.playerselect(1, inputButton - 1);
+                        }
+                        else
+                        {
+                           
+                            MemoryGame.instance.playerselect(1, inputButton - 1);
+
+                        }
+                    }
                         // do more stuff
                         break;
                     case 2:
+                    if(options[0].activeSelf) {
                         if (options[inputButton - 1].GetComponent<Option>().isCorrect)
                         {
 
@@ -52,6 +69,19 @@ public class ButtonController_Memory : MonoBehaviour
                             MemoryGame.instance.playerselect(2, inputButton - 1);
 
                         }
+                    } else if(option2[0].activeSelf) {
+                        if (option2[inputButton - 1].GetComponent<Option>().isCorrect)
+                        {
+
+                            MemoryGame.instance.playerselect(2, inputButton - 1);
+                        }
+                        else
+                        {
+
+                            MemoryGame.instance.playerselect(2, inputButton - 1);
+
+                        }
+                    }
                         // do more stuff
                         break;
                 }

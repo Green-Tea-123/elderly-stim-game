@@ -37,10 +37,10 @@ public class LibraryNo : MonoBehaviour
     }
     }
 
-    private void Update()
+    /*private void Update()
     {
         Updatestagenumber(GameManager.instance.lvlNo);
-    }
+    }*/
     public void Updatestagenumber(int a)
     {
         this.currentStagenumber = a;

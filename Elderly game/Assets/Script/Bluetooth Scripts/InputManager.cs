@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
 
+
     void Awake() {
         if (instance == null) {
             instance = this;
@@ -13,6 +14,10 @@ public class InputManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+    }
+
+    void update() {
+
     }
 
     // TODO modify to return controller identity and input
