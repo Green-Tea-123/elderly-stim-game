@@ -1671,6 +1671,8 @@ MonoBehaviour:
   qnPanel: {fileID: 20012471}
   qnPanel2: {fileID: 1743464101}
   qnGenerated: 0
+  score1: 0
+  score2: 0
   dog: {fileID: 1524985065923944821, guid: 1e7b655421e31a54da54e1104a5cc64c, type: 3}
   cat: {fileID: 6566024338470761466, guid: e60f2b4d96f06b342b0345d8fd4c1d25, type: 3}
   chick: {fileID: 5400762942012277632, guid: c3426576c7656e2409689035eb3589e5, type: 3}
@@ -1699,7 +1701,14 @@ MonoBehaviour:
   - {fileID: 1454029443}
   - {fileID: 1685688159}
   - {fileID: 577178529}
-  lvlset: clp
+  scoretxt1: {fileID: 304425445}
+  scoretxt2: {fileID: 550829499}
+  scoretxtfinal1: {fileID: 86186798}
+  scoretxtfinal2: {fileID: 160647348}
+  endscreen: {fileID: 1490212874}
+  continuebutton: {fileID: 867096831}
+  showanswerbutton: {fileID: 1511853011}
+  lvlset: cccddc
 --- !u!4 &180984018
 Transform:
   m_ObjectHideFlags: 0
@@ -2136,7 +2145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -194, y: -233}
+  m_AnchoredPosition: {x: 382, y: 37}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &304425445
@@ -3684,7 +3693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 466, y: -234}
+  m_AnchoredPosition: {x: 382, y: -25}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &550829499
@@ -4874,7 +4883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: -235}
+  m_AnchoredPosition: {x: 363, y: -96}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &867096833
@@ -9009,7 +9018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 264, y: -233}
+  m_AnchoredPosition: {x: 363, y: -172}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1511853013
@@ -10558,7 +10567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1743464102
 RectTransform:
   m_ObjectHideFlags: 0

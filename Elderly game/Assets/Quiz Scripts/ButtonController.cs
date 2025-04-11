@@ -26,6 +26,7 @@ public class ButtonController : MonoBehaviour
                 switch (controllerId)
                 {
                     case 1:
+                        
                         if (options[inputButton - 1].GetComponent<Option>().isCorrect)
                         {
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
+using static UnityEditor.PlayerSettings;
 
 
 
@@ -32,6 +33,10 @@ public class MemoryGame : MonoBehaviour
     public GameObject qnPanel;
     public GameObject qnPanel2;
     public bool qnGenerated = false;
+    private bool answerstatus = true;
+    private bool gamestatus = false;
+    public int score1 = 0;
+    public int score2 = 0;
 
     [Header("Animal prefebs")]
     public GameObject dog;
@@ -98,6 +103,13 @@ public class MemoryGame : MonoBehaviour
     public GameObject qnSprite;
     public GameObject[] options;
     public GameObject[] option2;
+    public TextMeshProUGUI scoretxt1;
+    public TextMeshProUGUI scoretxt2;
+    public GameObject scoretxtfinal1;
+    public GameObject scoretxtfinal2;
+    public GameObject endscreen;
+    public GameObject continuebutton;
+    public GameObject showanswerbutton;
 
 
 
@@ -117,7 +129,7 @@ public class MemoryGame : MonoBehaviour
             List<int> qn = new List<int>();
             /*qn.Add(UnityEngine.Random.Range(1, 4));
             qn.Add((UnityEngine.Random.Range(1, 4)));*/
-            qn.Add(2);
+            qn.Add(1);
             qn.Add(2);
             qntype.Add(qn);
         }
@@ -142,6 +154,12 @@ public class MemoryGame : MonoBehaviour
         {
             generateQuestion();
 
+        }
+        if (gamestatus == true)
+        {
+
+            scoretxt1.text = "Player 1 score:" + score1;
+            scoretxt2.text = "Player 2 score:" + score2;
         }
     }
 
@@ -364,17 +382,28 @@ public class MemoryGame : MonoBehaviour
                         qnNew = lvlset[0].ToString();
                         while (qnNew.Length< req)
                         {
-
-                            string additionalQn = lvlset[Random.Range(0, lvlset.Count)].ToString();
-                            if (!qnNew.Contains(additionalQn))
+                            if (appearing.Count < req)
                             {
-                                qnNew = qnNew + additionalQn;
+
+                                string additionalQn = keyList[Random.Range(0, keyList.Count)];
+                                if (!qnNew.Contains(additionalQn))
+                                {
+                                    qnNew = qnNew + additionalQn;
+                                }
+                            }
+                            else
+                            {
+                                string additionalQn = lvlset[Random.Range(0, lvlset.Length)].ToString();
+                                if (!qnNew.Contains(additionalQn))
+                                {
+                                    qnNew = qnNew + additionalQn;
+                                }
                             }
                             
                         }
                         while (ansSwq.Length< req)
                         {
-                            string additionalQn = qnNew[Random.Range(0, qnNew.Length + 1)].ToString();
+                            string additionalQn = qnNew[Random.Range(0, qnNew.Length)].ToString();
                             if (!ansSwq.Contains(additionalQn))
                             {
                                 ansSwq = ansSwq + additionalQn;
@@ -428,10 +457,22 @@ public class MemoryGame : MonoBehaviour
                         while (qnNew.Length< 4)
                         {
 
-                            string additionalQn = lvlset[Random.Range(0, keyList.Count)].ToString();
-                            if (!qnNew.Contains(additionalQn))
+                            if(appearing.Count < req)
                             {
-                                qnNew = qnNew + additionalQn;
+
+                                string additionalQn = keyList[Random.Range(0, keyList.Count)];
+                                if (!qnNew.Contains(additionalQn))
+                                {
+                                    qnNew = qnNew + additionalQn;
+                                }
+                            }
+                            else
+                            {
+                                string additionalQn = lvlset[Random.Range(0, lvlset.Length)].ToString();
+                                if (!qnNew.Contains(additionalQn))
+                                {
+                                    qnNew = qnNew + additionalQn;
+                                }
                             }
                         }
                         while (ansSwq.Length < req)
@@ -470,7 +511,139 @@ public class MemoryGame : MonoBehaviour
             }
         }
     }
+    public void continuegame()
+    {
+        answerstatus = true;
+        continuebutton.SetActive(true);
+        if (qntype.Count > 0)
+        {
+            generateQuestion();
+        }
+        else
+        {
+            endQuiz();
+        }
 
+    }
+
+    void endQuiz()
+    {
+        endscreen.SetActive(true);
+        scoretxtfinal1.SetActive(true);
+        scoretxtfinal2.SetActive(true);
+        scoretxtfinal1.GetComponent<TextMeshProUGUI>().text = "Player 1 final score is: " + score1;
+        scoretxtfinal2.GetComponent<TextMeshProUGUI>().text = "Player 2 final score is: " + score2;
+
+        for (int i = 0; i < options.Length; i++)
+        {
+            options[i].SetActive(false);
+        }
+    }
+    public void showanswer()
+    {
+        if (answerstatus == true)
+        {
+            showanswerbutton.SetActive(true);
+            Debug.Log("player1 pick:" + optionpickplayer1);
+            if (options[optionpickplayer1].GetComponent<Option>().isCorrect && options[optionpickplayer2].GetComponent<Option>().isCorrect)
+            {
+                correct();
+                score(1);
+                score(2);
+                answerstatus = false;
+            }
+            else if (options[optionpickplayer1].GetComponent<Option>().isCorrect)
+            {
+                correct();
+                score(1);
+                answerstatus = false;
+            }
+            else if (options[optionpickplayer2].GetComponent<Option>().isCorrect)
+            {
+                correct();
+                score(2);
+                answerstatus = false;
+            }
+            else
+            {
+                correct();
+                answerstatus = false;
+            }
+
+        }
+    }
+
+    public void score(int id)
+    {
+        if (id == 1)
+        {
+            score1++;
+        }
+        else
+        {
+            score2++;
+        }
+    }
+
+
+    public void correct()
+    {
+        int ansno = 0;
+        if (qnPanel.activeSelf && qntype.Count >0)
+        {
+            for (int i = 0; i < options.Length; i++) {
+                options[i].transform.Find("correct").GetComponent<RawImage>().enabled = false;
+                options[i].transform.Find("incorrect").GetComponent<RawImage>().enabled = false;
+                if (options[i].GetComponent<Option>().isCorrect)
+                {
+                    options[i].transform.Find("correct").GetComponent<RawImage>().enabled = true;
+                    ansno = i;
+                }
+                else
+                {
+                    options[i].transform.Find("incorrect").GetComponent<RawImage>().enabled = true;
+                }
+            }
+        } else if(qnPanel.activeSelf && qntype.Count <= 0)
+        {
+            for (int i = 0; i < options.Length; i++)
+            {
+                if (options[i].GetComponent<Option>().isCorrect)
+                {
+                    options[i].transform.Find("RawImage").GetComponent<RawImage>().enabled = true;
+                    options[i].transform.Find("correct").GetComponent<RawImage>().enabled = true;
+                }
+            }
+        }
+        else if (qnPanel2.activeSelf && qntype.Count > 0)
+        {
+            for (int i = 0; i < options.Length; i++)
+            {
+                option2[i].transform.Find("correct").GetComponent<RawImage>().enabled = false;
+                option2[i].transform.Find("incorrect").GetComponent<RawImage>().enabled = false;
+                if (option2[i].GetComponent<Option>().isCorrect)
+                {
+                    option2[i].transform.Find("correct").GetComponent<RawImage>().enabled = true;
+                    ansno = i;
+                }
+                else
+                {
+                    option2[i].transform.Find("incorrect").GetComponent<RawImage>().enabled = true;
+                }
+            }
+        } else if(qnPanel2.activeSelf && qntype.Count <= 0)
+        {
+            for (int i = 0; i < option2.Length; i++)
+            {
+                if (option2[i].GetComponent<Option>().isCorrect)
+                {
+                    option2[i].transform.Find("RawImage").GetComponent<RawImage>().enabled = true;
+                    option2[i].transform.Find("correct").GetComponent<RawImage>().enabled = true;
+                }
+            }
+        }
+
+    }
 }
 
 
