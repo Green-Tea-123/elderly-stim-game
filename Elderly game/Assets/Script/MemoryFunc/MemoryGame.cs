@@ -303,6 +303,8 @@ public class MemoryGame : MonoBehaviour
     }
     void generateQuestion()
     {
+        qnPanel.SetActive(false);
+        qnPanel2.SetActive(false);
         showedAns = true;
         qnGenerated = true;
         string reLoad = "AnimalSprite/";
@@ -529,7 +531,8 @@ public class MemoryGame : MonoBehaviour
     public void continuegame()
     {
         answerstatus = true;
-        continuebutton.SetActive(true);
+        if (showedAns == true) {
+            continuebutton.SetActive(true);
         if (qntype.Count > 0)
         {
             generateQuestion();
@@ -537,6 +540,7 @@ public class MemoryGame : MonoBehaviour
         else
         {
             endQuiz();
+        }
         }
 
     }
