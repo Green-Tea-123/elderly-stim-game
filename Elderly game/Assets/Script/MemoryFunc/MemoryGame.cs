@@ -38,7 +38,7 @@ public class MemoryGame : MonoBehaviour
     public int score1 = 0;
     public int score2 = 0;
     public int correctAns;
-    public GameObject clonez;
+    public bool showedAns = false;
 
     [Header("Animal prefebs")]
     public GameObject dog;
@@ -129,10 +129,8 @@ public class MemoryGame : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             List<int> qn = new List<int>();
-            /*qn.Add(UnityEngine.Random.Range(1, 4));
-            qn.Add((UnityEngine.Random.Range(1, 4)));*/
-            qn.Add(2);
-            qn.Add(0);
+            qn.Add(UnityEngine.Random.Range(1, 4));
+            qn.Add((UnityEngine.Random.Range(0, lvlset.Length)));
             qntype.Add(qn);
         }
 
@@ -305,6 +303,7 @@ public class MemoryGame : MonoBehaviour
     }
     void generateQuestion()
     {
+        showedAns = true;
         qnGenerated = true;
         string reLoad = "AnimalSprite/";
         if (qntype.Count != 0)
@@ -426,7 +425,7 @@ public class MemoryGame : MonoBehaviour
                         GameObject targets = Resources.Load<GameObject>(reLoad + prefebDict[ansSwq[i].ToString().ToUpper()]);
                    
                         GameObject target2 = Instantiate(targets, new Vector3(option2[i].transform.position.x, option2[i].transform.position.y, 0), targets.transform.rotation);
-                        target2.transform.SetParent(clonez.transform,false);
+                    
                         /*target2.transform.SetParent(option2[i].transform, false);*/
 
 
@@ -557,6 +556,7 @@ public class MemoryGame : MonoBehaviour
     }
     public void showanswer()
     {
+        showedAns=false;
         if (options[0].activeSelf) {
         if (answerstatus == true)
         {
