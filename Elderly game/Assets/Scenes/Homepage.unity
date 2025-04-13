@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafd5be3cfd113e4daf5fffeba28a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Quizcoverpage
+  nextSceneName: quiz_prototype
   button: {fileID: 510146337}
 --- !u!1 &575076004
 GameObject:
