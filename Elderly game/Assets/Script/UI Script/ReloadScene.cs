@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,18 +10,32 @@ public class ReloadScene : MonoBehaviour
     public void reloadScenes()
     {
         string lvlselection = "";
-        if (SceneManager.GetActiveScene().name.Contains("Rythmgame_fast"))
-        {
-            lvlselection = "Rythmgame_fastlvl";
+        
 
-        }
-        else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_medium"))
+
+        if (SceneManager.GetActiveScene().name.Contains("Rythmgame_single_fast"))
         {
-            lvlselection = "Rythmgame_mediumlvl";
+            lvlselection = "Rythmgame_single_fastlvl";
         }
-        else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_slowlvl"))
+        else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_single_medium"))
         {
-            lvlselection = "Rythmgame_slowlvl";
+            lvlselection = "Rythmgame_single_mediumlvl";
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_single_slow"))
+        {
+            lvlselection = "Rythmgame_single_slowlvl";
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_coop_fast"))
+        {
+            lvlselection = "Rythmgame_coop_fastlvl";
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_coop_medium"))
+        {
+            lvlselection = "Rythmgame_coop_mediumlvl";
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_coop_slow"))
+        {
+            lvlselection = "Rythmgame_coop_slowlvl";
         }
 
         SceneManager.LoadScene(lvlselection);

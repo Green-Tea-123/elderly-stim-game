@@ -177,6 +177,10 @@ public class GameManager : MonoBehaviour
             Started=false;
             playerIndicator.transform.parent.gameObject.SetActive(false);
             resultScreen.SetActive(true);
+                if (SceneManager.GetActiveScene().name.Contains("customizable"))
+                {
+                    resultScreen.transform.Find("Next").transform.gameObject.SetActive(false);
+                }
                 hasended = true;
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
@@ -622,6 +626,8 @@ public class GameManager : MonoBehaviour
     public void updateMusic(string str)
     {
         music.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(musicLink + str);
+        music.GetComponent<AudioSource>().volume = 0.1f;
+        music.GetComponent<AudioSource>().loop = true;
     }
 
 

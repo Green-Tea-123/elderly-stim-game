@@ -114,7 +114,14 @@ public class MemoryGame : MonoBehaviour
     public GameObject continuebutton;
     public GameObject showanswerbutton;
 
-
+    public static Dictionary<string, string> lvlinfo = new Dictionary<string, string>(){
+    {"1", "CQN"},
+    {"2", "DFX"},
+    {"3", "EHG"},
+    {"4", "LSM"},
+    {"5", "PRV"},
+    {"customizable", ""}
+    };
 
 
 

@@ -45,10 +45,10 @@ public class NextLevel : MonoBehaviour
             difficulty = "Rythmgame_coop_slow";
         }
         int lvl = int.Parse(lvlno);
-        if(lvl <13) {
+        if(lvl <12) {
         SceneManager.LoadScene(difficulty + (lvl+1).ToString());
         } else {
-            lastStage.SetActive(true);
+            SceneManager.LoadScene(difficulty+"lvl");
         }
 
     }
