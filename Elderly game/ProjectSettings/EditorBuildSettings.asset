@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/quiz_prototype.unity
     guid: 72816694c793bdc44bb9772ecd6e31b4
   - enabled: 1
-    path: Assets/Scenes/Rythm game_fast/Rythmgame_fast8.unity
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast1.unity
     guid: 8deac6fe19cc1f24dbe7450ca1d88420
   - enabled: 1
     path: Assets/Scenes/Quizcoverpage.unity
@@ -30,14 +30,14 @@ EditorBuildSettings:
     path: Assets/Scenes/rythm game_slow/Rythmgame_slowlvl.unity
     guid: 65e2bb78de256114bbee60b39e9effcc
   - enabled: 1
-    path: Assets/Scenes/Rythm game_fast/Rythmgame_fastlvl.unity
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fastlvl.unity
     guid: 81964cd7f76069c489d0275bae045640
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rythm game_fast/Rythmgame_fast9.unity
     guid: b381930ce083789428d89abc1d9d12eb
   - enabled: 1
     path: Assets/Scenes/rythm game_slow/Rythmgame_slow8.unity
-    guid: 23143fce6ff652349860ec80fee9b2b6
+    guid: 939ad3f51af9c78449778e3bdf41c5ef
   - enabled: 1
     path: Assets/Scenes/Rythm game_medium/Rythmgame_mediumlvl.unity
     guid: 1f377565f04c7634e815443f0307c829
@@ -47,4 +47,40 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Memory_Form2.unity
     guid: 8292572b2d531604485f3fd19ff59389
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast3.unity
+    guid: af18a686ecfa20540b231e115a8f19c1
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast2.unity
+    guid: 18f6779246c0bd949be971b04e238127
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast4.unity
+    guid: 66cb8004411281e46b71a375bad512cd
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast5.unity
+    guid: ab2b48a13b0200e44b1d011219bc640a
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast6.unity
+    guid: 5256ae9a1bf8a0348bb86d461a26babb
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast9.unity
+    guid: 27abb2c98c3944345a23fd065f867147
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast8.unity
+    guid: d3cc6272806eab24f81d2a7cf00ba69c
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast7.unity
+    guid: 48f5577dbe49db54a928d033e26ff3c5
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast10.unity
+    guid: ffad6fcaec24bf34eac1d23537c21fcc
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast11.unity
+    guid: 15354c9cfd46640438fa3faddb5ac5c1
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast12.unity
+    guid: 07cf2f99ac791bc4ca532da62c9f7d97
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fastCu.unity
+    guid: 25b1f8f16395e814c8895649a408ab7f
   m_configObjects: {}

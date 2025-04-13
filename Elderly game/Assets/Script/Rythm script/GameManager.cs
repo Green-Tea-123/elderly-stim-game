@@ -102,20 +102,38 @@ public class GameManager : MonoBehaviour
       
         instance = this;
         string lvlno = "";
-        if (SceneManager.GetActiveScene().name.Contains("Rythmgame_fast"))
+        if (SceneManager.GetActiveScene().name.Contains("Rythmgame_single_fast"))
         {
             this.framerate = 30f;
-            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_fast");
-        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_medium")) {
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_single_fast");
+            GameManager.instance.isCoop=false;
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_single_medium")) {
             this.framerate = 60f;
-            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_medium");
-        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_slow")) { 
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_single_medium");
+            GameManager.instance.isCoop=false;
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_single_slow")) { 
             this.framerate = 90f;
-            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_slow");
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_single_slow");
+            GameManager.instance.isCoop=false;
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_coop_fast"))
+        {
+            this.framerate = 30f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_coop_fast");
+            GameManager.instance.isCoop=true;
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_coop_medium")) {
+            this.framerate = 60f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_coop_medium");
+            GameManager.instance.isCoop=true;
+        } else if (SceneManager.GetActiveScene().name.Contains("Rythmgame_coop_slow")) { 
+            this.framerate = 90f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Rythmgame_coop_slow");
+            GameManager.instance.isCoop=true;
         }
         Debug.Log(lvlno);
         UpdatetheTile(lvlinfo[lvlno]);
-
+        if(GameManager.instance.isCoop == true) {
+             playerIndicator.gameObject.SetActive(true);}
+             else {playerIndicator.transform.parent.gameObject.SetActive(false);}
     }
 
     void Start()
@@ -154,6 +172,7 @@ public class GameManager : MonoBehaviour
             if ( hitno + missno == totalnotes && !resultScreen.activeInHierarchy && !emergencyStop && !coverpage.activeSelf) { 
             resultScreen.SetActive(true);
                 hasended = true;
+                playerIndicator.gameObject.SetActive(false);
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
             }
