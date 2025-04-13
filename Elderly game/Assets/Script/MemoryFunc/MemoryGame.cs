@@ -40,6 +40,8 @@ public class MemoryGame : MonoBehaviour
     public int correctAns;
     public bool showedAns = false;
     public bool qnDone = true;
+    public GameObject pausedPage;
+    public bool emergencyStop;
 
     [Header("Animal prefebs")]
     public GameObject dog;
@@ -120,7 +122,7 @@ public class MemoryGame : MonoBehaviour
     {"3", "EHG"},
     {"4", "LSM"},
     {"5", "PRV"},
-    {"customizable", ""}
+    {"customize", ""}
     };
 
 
@@ -129,6 +131,27 @@ public class MemoryGame : MonoBehaviour
     void Awake()
     {
         instance = this;
+    
+        string lvlno ="";
+        if (SceneManager.GetActiveScene().name.Contains("Guess_fast"))
+        {
+            Time.timeScale=2f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Guess_fast".ToCharArray());
+        } else if (SceneManager.GetActiveScene().name.Contains("Guess_medium")) {
+Time.timeScale=1f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Guess_medium".ToCharArray());
+
+        } else if (SceneManager.GetActiveScene().name.Contains("Guess_slow")) { 
+            Time.timeScale=0.5f;
+            lvlno = SceneManager.GetActiveScene().name.TrimStart("Guess_slow".ToCharArray());
+
+        } 
+        lvlset=lvlinfo[lvlno.ToString()];
+        
+    }
+
+    void Start()
+    {
         for (int i = 0; i < lvlset.Length; i++)
         {
             yaxis.Add(UnityEngine.Random.Range(yMin, yMax));
@@ -143,26 +166,31 @@ public class MemoryGame : MonoBehaviour
             qntype.Add(qn);}
 
         }
-        Time.timeScale=0.5f;
-
-    }
-
-    void Start()
-    {
-        initiateAnimals(lvlset);
         countOccurances(lvlset);
+        initiateAnimals(lvlset);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            emergencyStop = !emergencyStop;
+            if (emergencyStop)
+            {
+                Time.timeScale = 0;
+                pausedPage.SetActive(true);
+            }
+            else { Time.timeScale = 1; pausedPage.SetActive(false); }
+        }
+
         if (destoriedCount == lvlset.Length && !quizpage.activeSelf)
         {
             qnDone=true;
             quizpage.SetActive(true);
         }
 
-        if (quizpage.activeSelf && !qnGenerated)
+        if (quizpage.activeSelf && !qnGenerated && !quizpage.transform.Find("Customizable").transform.gameObject.activeSelf)
         {
             generateQuestion();
 
@@ -179,7 +207,7 @@ public class MemoryGame : MonoBehaviour
     {
         string b = animals.ToUpper();
         int alength = animals.Length;
-        for (int i = 0; i < alength; i++)
+        for (int i = 0; i < alength ; i++)
         {
             char c = b[i];
             if (c == 'C')
@@ -726,6 +754,18 @@ public class MemoryGame : MonoBehaviour
         initiateAnimals(lvlset);
         qnDone = false;
     }
+
+    public void resumeGame() {
+        emergencyStop = !emergencyStop;
+        Time.timeScale = 1;
+        pausedPage.SetActive(false);
+    }
+
+    public void updateLvlTest(string lvltext) {
+        lvlset = lvltext;
+        Debug.Log(lvlset);
+        Start();
+    } 
 
 }
 

@@ -37,6 +37,16 @@ public class RythmGameLvlSelection : MonoBehaviour
         } else if (SceneManager.GetActiveScene().name == "Rythmgame_coop_slowlvl")
         {
             lvlselection = "Rythmgame_coop_slow";
+        } else if (SceneManager.GetActiveScene().name == "Guess_fastlvl")
+        {
+            lvlselection = "Guess_fast";
+        } else if (SceneManager.GetActiveScene().name == "Guess_mediumlvl")
+        {
+            lvlselection = "Guess_medium";
+        }
+        else if (SceneManager.GetActiveScene().name == "Guess_slowlvl")
+        {
+            lvlselection = "Guess_slow";
         }
         lvlselection = lvlselection + textz.text;
         SceneManager.LoadScene(lvlselection);

@@ -37,6 +37,18 @@ public class ReloadScene : MonoBehaviour
         {
             lvlselection = "Rythmgame_coop_slowlvl";
         }
+        else if (SceneManager.GetActiveScene().name.Contains("Guess_fast"))
+        {
+            lvlselection = "Guess_fastlvl";
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Guess_medium"))
+        {
+            lvlselection = "Guess_mediumlvl";
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Guess_slow"))
+        {
+            lvlselection = "Guess_slowlvl";
+        }
 
         SceneManager.LoadScene(lvlselection);
         Time.timeScale = 1.0f;
