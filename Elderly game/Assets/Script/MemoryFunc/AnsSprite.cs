@@ -16,5 +16,11 @@ public class AnsSprite : MonoBehaviour
         if(MemoryGame.instance.showedAns==false) {
             Destroy(gameObject);
         }
+
+        if(MemoryGame.instance.qnDone==false) {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        } else {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
     }
 }

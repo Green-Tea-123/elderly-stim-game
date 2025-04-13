@@ -23,25 +23,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rythm game_difficulty selection.unity
     guid: eccef216767827341b4e4dc8343ef0a9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rythm game_medium/Rythmgame_medium.unity
     guid: 471ed20046dfb6d49a68845d90745beb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/rythm game_slow/Rythmgame_slowlvl.unity
     guid: 65e2bb78de256114bbee60b39e9effcc
   - enabled: 1
     path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fastlvl.unity
-    guid: 81964cd7f76069c489d0275bae045640
+    guid: 1224c7c71281daa4dab29fd0df051cbb
   - enabled: 0
     path: Assets/Scenes/Rythm game_fast/Rythmgame_fast9.unity
     guid: b381930ce083789428d89abc1d9d12eb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/rythm game_slow/Rythmgame_slow8.unity
     guid: 939ad3f51af9c78449778e3bdf41c5ef
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rythm game_medium/Rythmgame_mediumlvl.unity
     guid: 1f377565f04c7634e815443f0307c829
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rythm game_medium/Rythmgame_medium8.unity
     guid: aac7e85eab3d75848ad937a302003e40
   - enabled: 1
@@ -81,6 +81,240 @@ EditorBuildSettings:
     path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast12.unity
     guid: 07cf2f99ac791bc4ca532da62c9f7d97
   - enabled: 1
-    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fastCu.unity
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fastcustomizable.unity
     guid: 25b1f8f16395e814c8895649a408ab7f
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast1.unity
+    guid: fab6ffa436d6e5945a3f5467f7adc440
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast2.unity
+    guid: 74d223f3361669b4488af9abcee2baa0
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast3.unity
+    guid: dafcdaaf4e9b7e448b14f48f02ed9ed9
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast4.unity
+    guid: f72676b25c466fc4a822ed0d693bf63e
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast5.unity
+    guid: 630770511a00991459f9a133cb518a1a
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast6.unity
+    guid: 64b0917465233964ea2b9fede2336009
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast7.unity
+    guid: 5af07ee2c9ef84e4f8a3eae3a8d82968
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast8.unity
+    guid: 5c464678e0742e64ab8ad55c8a95de32
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast9.unity
+    guid: 526523a6135ed6f4e86cf395740057de
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast10.unity
+    guid: 9d7d424a3ff11814593de74e50b3edad
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast11.unity
+    guid: 9936c18e1a4dfaf478b9eb71c8e3f16e
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast12.unity
+    guid: 295eaec1aaa8f3e4cb9671aad5f832e0
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium1.unity
+    guid: 9f37c276be0b9034f9e1f3a67c2dd72a
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium2.unity
+    guid: 3911bb99e99a51145a861812a5995aaf
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium3.unity
+    guid: fb95b17300072f341a641bff1caf470b
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium4.unity
+    guid: b0cad59380a363f43a0f4a50afd29735
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium5.unity
+    guid: 22ac904ac9c07454a9da8e7ac72c5d76
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium6.unity
+    guid: 9759cbec426ff2e439bf37c860b1ee1c
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium7.unity
+    guid: da47e807d027942419164dd320569fcb
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium8.unity
+    guid: 8061516a4485b7f4db3e6ca3bec459cf
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium9.unity
+    guid: 7f27d143ca998004ea36a74ea0f55806
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium10.unity
+    guid: 9ffba414d50d8ed4ba944130c4ef0ba9
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium11.unity
+    guid: 4c3edaffc7eacea4591101c69ad2825a
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium12.unity
+    guid: 576cca448d26e5449a143fe735975ee9
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_mediumcustomizable.unity
+    guid: 0622f1fe980df2d42bdc952066b312b9
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium1.unity
+    guid: 287088f69ae986746b56bebcaa13f324
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium2.unity
+    guid: 520ee15e01391a04eaf49390d23397be
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium3.unity
+    guid: 90a37e3c2beb52749b37fc84f1aedb38
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium4.unity
+    guid: a1826436e266fc74fb62fe9634686568
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium5.unity
+    guid: 0166bdfdae1c027439838db6e790b5f1
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium6.unity
+    guid: bd8ca475f1d330841998883c865f8252
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium7.unity
+    guid: e5caff3bae72ae846a856b08481de004
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium8.unity
+    guid: f991516ce6c137744adc7a39eeb02c74
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium9.unity
+    guid: 6179e219e9762e94bb4c8d8b41c81ff5
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium10.unity
+    guid: b7b53786742710348a62b8b70230d08a
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium11.unity
+    guid: c9f1709424851054db0e0e9182e8bc0d
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium12.unity
+    guid: 3b3ea2ffd54326d408e0feee635a97b7
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_mediumcustomizable.unity
+    guid: b5019df35af6d7f4184786c418e80ea5
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fastcustomizable.unity
+    guid: 25536e2159f5aae4dab7584f0bcb9608
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow1.unity
+    guid: 831c0d26330a46645b5fd42d04ebf5a0
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow2.unity
+    guid: d3ed211f6d18c2e4c952d79065076178
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow3.unity
+    guid: 95c79bd68df0dff40b0d5dbb73f99c26
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow4.unity
+    guid: 2f537c4bce969894396df27e66ae4896
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow5.unity
+    guid: d48e65bc80e0712498103f6f8f8ae594
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow6.unity
+    guid: 5d4b1240e0698694d80e336c80016145
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow7.unity
+    guid: 813908c70d9fbca4fafc277b726e8a1b
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow8.unity
+    guid: b6cb94ac41605de458de86fa2707a204
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow9.unity
+    guid: 00a7c26b56af5c246a3026c21a2b9be5
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow10.unity
+    guid: 584178773dc5fd2408309327062375fd
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow11.unity
+    guid: 4b73873b083f1f444a3833b1efde806a
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow12.unity
+    guid: 8591c2ac25fa3c249b750df099d4b644
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slowcustomizable.unity
+    guid: ece473a67a3bbc44d9dd7694b84f6760
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow1.unity
+    guid: 734ecbba0acc76743bddc788c25873bc
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow2.unity
+    guid: fa25e9e9221cd4442b0ee2328540955e
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow3.unity
+    guid: b16c67d4a09da994dbe8ad12e91a8256
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow4.unity
+    guid: 950aec28621819b4a8042cb2bb7e5e8b
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow5.unity
+    guid: 6fe616e78f7925947a7f3b4cc47060e4
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow6.unity
+    guid: 8ca8e88c664d47e439e76592cc32ec5a
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow7.unity
+    guid: 279452b9a70496d4cbd5114ff4079419
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow8.unity
+    guid: eeb89c8e2bce2a44d9a23301c0f75277
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow9.unity
+    guid: 27f062fbb9968a4429a2f2114f832068
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow10.unity
+    guid: 9e9b7c959b76c1a46a58b44a2e55ad8c
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow12.unity
+    guid: ee6ee0e5afd86b04588b07e67a404a59
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow11.unity
+    guid: 3c0dc93e51485fc41b126e6d97bfc630
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slowcustomizable.unity
+    guid: f6fc5aab0e618f7498d1a8380a9b71ed
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythm game_playmode_fast.unity
+    guid: 75e2f8c06042a9047a477b5edcd1d5be
+  - enabled: 0
+    path: Assets/Scenes/Rythm game_playmode_medium.unity
+    guid: 177de008f2b374e49879ade0bb06eeab
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythm game_playmode_slow.unity
+    guid: 2c4399d78db3c674b82d71e74183bc65
+  - enabled: 0
+    path: Assets/Scenes/Rythmgame_coop_fastlvl.unity
+    guid: 5518809f31dc40245abf05a310c6b78a
+  - enabled: 0
+    path: Assets/Scenes/Rythmgame_coop_mediumlvl.unity
+    guid: 5dc9029307c691043a896a7aad46fff0
+  - enabled: 0
+    path: Assets/Scenes/Rythmgame_coop_slowlvl.unity
+    guid: c6f8eba218315bd4482c984b7e63f24d
+  - enabled: 0
+    path: Assets/Scenes/Rythmgame_single_fastlvl.unity
+    guid: a33cafe0d2c491f41a0fe3492c7910b8
+  - enabled: 0
+    path: Assets/Scenes/Rythmgame_single_mediumlvl.unity
+    guid: b5972573671a4864ea5b8c5d78e8f90d
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slowlvl.unity
+    guid: ef66516a0aa0afc49a8ddd6d24b812de
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_mediumlvl.unity
+    guid: e7413a355e6a01d4f88d3899cbe96b98
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_mediumlvl.unity
+    guid: 4940025ecba9f544bb5c54ed62dbfd0a
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fastlvl.unity
+    guid: 3ef25eacb02e7a746808152b5ddc1087
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slowlvl.unity
+    guid: eae88183cdb38b84d9b711ffedcc259a
   m_configObjects: {}

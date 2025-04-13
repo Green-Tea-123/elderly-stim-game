@@ -5,14 +5,15 @@ using UnityEngine;
 public class AnimalPrefab : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float moveSpeed = 120;
+    public float moveSpeed;
     public bool hasStart = false;
     public float initialPos;
     public bool musicPlay = false;
     public bool canMove = true;
     void Start()
     {
-        moveSpeed = moveSpeed / MemoryGame.instance.speed;
+        
+        moveSpeed = moveSpeed/MemoryGame.instance.speed;
         if (gameObject.transform.position.x < 0)
         {
             gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().flipX=true;

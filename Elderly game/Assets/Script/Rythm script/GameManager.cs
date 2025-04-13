@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     {"10", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFHJRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFHJ"},
     {"11", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDSRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDS"},
     {"12", "RFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDSRFDSHKBJYGRBKYGFDSHKBJYGRBKYGFDS"},
-    {"13", ""}
+    {"customizable", ""}
     };
     private void Awake()
     {
@@ -131,9 +131,7 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log(lvlno);
         UpdatetheTile(lvlinfo[lvlno]);
-        if(GameManager.instance.isCoop == true) {
-             playerIndicator.gameObject.SetActive(true);}
-             else {playerIndicator.transform.parent.gameObject.SetActive(false);}
+
     }
 
     void Start()
@@ -170,9 +168,10 @@ public class GameManager : MonoBehaviour
         else
         {
             if ( hitno + missno == totalnotes && !resultScreen.activeInHierarchy && !emergencyStop && !coverpage.activeSelf) { 
+            Started=false;
+            playerIndicator.transform.parent.gameObject.SetActive(false);
             resultScreen.SetActive(true);
                 hasended = true;
-                playerIndicator.gameObject.SetActive(false);
             hitnotext.text = " " + hitno;
             missnotext.text = "" + missno;
             }
@@ -328,7 +327,10 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
+        if(isCoop ==true && Started == true) {
+        playerIndicator.transform.parent.gameObject.SetActive(true);}
+             else {playerIndicator.transform.parent.gameObject.SetActive(false);
+             }
         // A bit stupid way to implement co op but whatever
         if (isCoop && ((int)Time.time % 20 == 0)) {
             if (!locked) {

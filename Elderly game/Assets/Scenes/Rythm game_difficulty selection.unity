@@ -1018,9 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 116735212}
-  score: {fileID: 0}
 --- !u!114 &190813922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,9 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 61514383}
-  score: {fileID: 0}
 --- !u!114 &232928771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1796,9 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 1202277429}
-  score: {fileID: 0}
 --- !u!114 &476383711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2070,9 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 61449265}
-  score: {fileID: 0}
 --- !u!114 &535281775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2715,7 +2707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafd5be3cfd113e4daf5fffeba28a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Rythmgame_mediumlvl
+  nextSceneName: Rythm game_playmode_medium
   button: {fileID: 782139490}
 --- !u!1 &793758770
 GameObject:
@@ -3044,9 +3036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 1526350067}
-  score: {fileID: 0}
 --- !u!114 &844595757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3611,9 +3601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 44226277}
-  score: {fileID: 0}
 --- !u!114 &1090976071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4049,9 +4037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 2124612274}
-  score: {fileID: 0}
 --- !u!114 &1253887828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4198,9 +4184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 216473142}
-  score: {fileID: 0}
 --- !u!114 &1279802857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4533,9 +4517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 576670012}
-  score: {fileID: 0}
 --- !u!114 &1430379203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5352,7 +5334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafd5be3cfd113e4daf5fffeba28a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Rythmgame_fastlvl
+  nextSceneName: Rythm game_playmode_fast
   button: {fileID: 1646484726}
 --- !u!1 &1713495192
 GameObject:
@@ -5406,9 +5388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 119677136}
-  score: {fileID: 0}
 --- !u!114 &1713495195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5864,9 +5844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 1386438309}
-  score: {fileID: 0}
 --- !u!114 &1936068670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6229,7 +6207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafd5be3cfd113e4daf5fffeba28a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Rythmgame_slowlvl
+  nextSceneName: Rythm game_playmode_slow
   button: {fileID: 2020219019}
 --- !u!1 &2052153837
 GameObject:
@@ -6358,9 +6336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 118025305}
   textz: {fileID: 800633484}
-  score: {fileID: 0}
 --- !u!114 &2118632726
 MonoBehaviour:
   m_ObjectHideFlags: 0

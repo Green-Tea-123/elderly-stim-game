@@ -21,7 +21,7 @@ public class MemoryGame : MonoBehaviour
     public float yMin = 1;
     public float yMax = -3;
 
-    public float speed = 60;
+    public float speed = 3;
     public List<float> yaxis = new List<float>();
     public List<float> xaxis = new List<float>();
     public int destoriedCount;
@@ -39,6 +39,7 @@ public class MemoryGame : MonoBehaviour
     public int score2 = 0;
     public int correctAns;
     public bool showedAns = false;
+    public bool qnDone = true;
 
     [Header("Animal prefebs")]
     public GameObject dog;
@@ -126,13 +127,16 @@ public class MemoryGame : MonoBehaviour
             yaxis.Add(UnityEngine.Random.Range(yMin, yMax));
             xaxis.Add(UnityEngine.Random.Range(0, 2));
         }
-        for (int i = 0; i < 3; i++)
+        while (qntype.Count < 3)
         {
             List<int> qn = new List<int>();
             qn.Add(UnityEngine.Random.Range(1, 4));
             qn.Add((UnityEngine.Random.Range(0, lvlset.Length)));
-            qntype.Add(qn);
+            if(!qntype.Contains(qn)) {
+            qntype.Add(qn);}
+
         }
+        Time.timeScale=0.5f;
 
     }
 
@@ -147,6 +151,7 @@ public class MemoryGame : MonoBehaviour
     {
         if (destoriedCount == lvlset.Length && !quizpage.activeSelf)
         {
+            qnDone=true;
             quizpage.SetActive(true);
         }
 
@@ -707,6 +712,14 @@ public class MemoryGame : MonoBehaviour
 
     }
 }
+
+    public void playAgin() {
+        quizpage.SetActive(false);
+        destoriedCount = 0;
+        initiateAnimals(lvlset);
+        qnDone = false;
+    }
+
 }
 
 
