@@ -504,9 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 1243033318}
-  score: {fileID: 829973757}
 --- !u!1 &169663436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,9 +1347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 1597345080}
-  score: {fileID: 829973757}
 --- !u!1 &332251937
 GameObject:
   m_ObjectHideFlags: 0
@@ -3988,9 +3984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 238228668}
-  score: {fileID: 829973757}
 --- !u!1 &820647874
 GameObject:
   m_ObjectHideFlags: 0
@@ -5078,9 +5072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 962233013}
-  score: {fileID: 829973757}
 --- !u!1 &962233011
 GameObject:
   m_ObjectHideFlags: 0
@@ -6071,6 +6063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: {fileID: 195166064}
   frontPage: {fileID: 368023961}
+  lastStage: {fileID: 0}
 --- !u!1 &1205774737
 GameObject:
   m_ObjectHideFlags: 0
@@ -6351,9 +6344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 563484771}
-  score: {fileID: 829973757}
 --- !u!1 &1218322238
 GameObject:
   m_ObjectHideFlags: 0
@@ -6500,9 +6491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 720561517}
-  score: {fileID: 829973757}
 --- !u!1 &1237522988
 GameObject:
   m_ObjectHideFlags: 0
@@ -6581,7 +6570,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
+  m_UpdateRectTransformForStandalone: 1
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
@@ -6755,9 +6744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 432089577}
-  score: {fileID: 829973757}
 --- !u!1 &1243033316
 GameObject:
   m_ObjectHideFlags: 0
@@ -7122,9 +7109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 2012519708}
-  score: {fileID: 829973757}
 --- !u!1 &1357999671
 GameObject:
   m_ObjectHideFlags: 0
@@ -7319,9 +7304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 902656591}
-  score: {fileID: 829973757}
 --- !u!1 &1426511968
 GameObject:
   m_ObjectHideFlags: 0
@@ -8192,9 +8175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 1205774739}
-  score: {fileID: 829973757}
 --- !u!1 &1572761406
 GameObject:
   m_ObjectHideFlags: 0
@@ -8743,9 +8724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 2118515053}
-  score: {fileID: 829973757}
 --- !u!1 &1732822009
 GameObject:
   m_ObjectHideFlags: 0
@@ -9389,9 +9368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131c5b3fba27bb2439ebf2120bc681c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializePage: {fileID: 368023961}
   textz: {fileID: 370930904}
-  score: {fileID: 829973757}
 --- !u!1 &1900937349
 GameObject:
   m_ObjectHideFlags: 0

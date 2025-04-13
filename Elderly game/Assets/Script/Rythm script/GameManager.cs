@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
     public GameObject greenSprite;
     public GameObject blueSprite;
     public GameObject yellowSprite;
+    private string musicLink = "Music/";
     public static Dictionary<string, string> lvlinfo = new Dictionary<string, string>(){
     {"1", "RBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYGRBYG"},
     {"2", "RSBYHGRBYGSBYHGRBYGRSBYHGRBYGRBYRSBYHGRBYGSBYHGRBYGRSBYHGRBYGRBY"},
@@ -131,6 +132,11 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log(lvlno);
         UpdatetheTile(lvlinfo[lvlno]);
+        if(lvlno=="customizable")
+        {
+            lvlno = Random.Range(1, 12).ToString();
+        }
+        updateMusic(lvlno);
 
     }
 
@@ -611,6 +617,11 @@ public class GameManager : MonoBehaviour
         this.greenCanBePressed = rd;
         this.greenName = str;
         this.greenToDis = tile;
+    }
+
+    public void updateMusic(string str)
+    {
+        music.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(musicLink + str);
     }
 
 
