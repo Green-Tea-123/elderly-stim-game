@@ -1704,6 +1704,7 @@ MonoBehaviour:
   qnPanel: {fileID: 20012471}
   qnPanel2: {fileID: 1743464101}
   qnGenerated: 0
+  answerstatus: 1
   score1: 0
   score2: 0
   correctAns: 0
@@ -1743,7 +1744,7 @@ MonoBehaviour:
   endscreen: {fileID: 1490212874}
   continuebutton: {fileID: 867096831}
   showanswerbutton: {fileID: 1511853011}
-  lvlset: c
+  lvlset: cp
 --- !u!4 &180984018
 Transform:
   m_ObjectHideFlags: 0
@@ -7968,7 +7969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1399123340
 Transform:
   m_ObjectHideFlags: 0

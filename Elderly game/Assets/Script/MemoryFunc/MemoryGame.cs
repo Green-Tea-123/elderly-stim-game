@@ -33,7 +33,7 @@ public class MemoryGame : MonoBehaviour
     public GameObject qnPanel;
     public GameObject qnPanel2;
     public bool qnGenerated = false;
-    private bool answerstatus = true;
+    public bool answerstatus = true;
     private bool gamestatus = false;
     public int score1 = 0;
     public int score2 = 0;
@@ -512,6 +512,7 @@ public class MemoryGame : MonoBehaviour
                         if (ansSwq[i] == lvlset[lvlset.Length-1])
                         {
                             option2[i].GetComponent<Option>().isCorrect = true;
+                            Debug.Log(i + "isCorrect");
 
                         }
 
@@ -531,7 +532,7 @@ public class MemoryGame : MonoBehaviour
     public void continuegame()
     {
         answerstatus = true;
-        if (showedAns == true) {
+        if (showedAns == false) {
             continuebutton.SetActive(true);
         if (qntype.Count > 0)
         {
@@ -561,7 +562,7 @@ public class MemoryGame : MonoBehaviour
     public void showanswer()
     {
         showedAns=false;
-        if (options[0].activeSelf) {
+        if (options[0].activeInHierarchy) {
         if (answerstatus == true)
         {
             showanswerbutton.SetActive(true);
@@ -593,25 +594,28 @@ public class MemoryGame : MonoBehaviour
             }
 
         }
-    } else if (option2[0].activeSelf) {
+    } else if (option2[0].activeInHierarchy) {
         if (answerstatus == true) {
             showanswerbutton.SetActive(true);
             Debug.Log("player1 pick:" + optionpickplayer1);
             Debug.Log("player2 pick:" + optionpickplayer2);
+            Debug.Log(option2);
+            Debug.Log(option2[optionpickplayer2]);
             if (option2[optionpickplayer1].GetComponent<Option>().isCorrect && option2[optionpickplayer2].GetComponent<Option>().isCorrect)
             {
+
                 correct();
                 score(1);
                 score(2);
                 answerstatus = false;
             }
-            else if (option2[optionpickplayer1].GetComponent<Option>().isCorrect| optionpickplayer1 == correctAns)
+            else if (option2[optionpickplayer1].GetComponent<Option>().isCorrect|| optionpickplayer1 == correctAns)
             {
                 correct();
                 score(1);
                 answerstatus = false;
             }
-            else if (option2[optionpickplayer2].GetComponent<Option>().isCorrect| optionpickplayer2 == correctAns)
+            else if (option2[optionpickplayer2].GetComponent<Option>().isCorrect|| optionpickplayer2 == correctAns)
             {
                 correct();
                 score(2);
@@ -666,6 +670,8 @@ public class MemoryGame : MonoBehaviour
                 {
                     options[i].transform.Find("RawImage").gameObject.SetActive(true);
                     options[i].transform.Find("correct").gameObject.SetActive(true);
+                } else {
+                    options[i].transform.Find("incorrect").gameObject.SetActive(true);
                 }
             }
         }
@@ -693,12 +699,14 @@ public class MemoryGame : MonoBehaviour
                 if (option2[i].GetComponent<Option>().isCorrect)
                 {
                     option2[i].transform.Find("RawImage").gameObject.SetActive(true);
-                    option2[i].transform.Find("incorrect").gameObject.SetActive(true);
-                }
+    
+            }else {
+                option2[i].transform.Find("incorrect").gameObject.SetActive(true);
             }
         }
 
     }
+}
 }
 
 
