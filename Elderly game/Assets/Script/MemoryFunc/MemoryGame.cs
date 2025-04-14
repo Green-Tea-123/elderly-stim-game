@@ -15,6 +15,7 @@ public class MemoryGame : MonoBehaviour
     public static MemoryGame instance;
     public int correctNo;
     [Header("Game settings")]
+    public string lvlno ="";
     public float xMin = 4;
     public float xMax = 20;
     public float yMin = 1;
@@ -131,7 +132,6 @@ public class MemoryGame : MonoBehaviour
     {
         instance = this;
     
-        string lvlno ="";
         if (SceneManager.GetActiveScene().name.Contains("Guess_fast"))
         {
             Time.timeScale=2f;
@@ -462,6 +462,7 @@ Time.timeScale=1f;
                         option2[i].transform.Find("player2").gameObject.SetActive(false);
                         option2[i].transform.Find("RawImage").gameObject.SetActive(false);
                         option2[i].transform.Find("incorrect").gameObject.SetActive(false);
+                        option2[i].transform.Find("Text (TMP)").gameObject.SetActive(false);
                         option2[i].GetComponent<Option>().isCorrect = false;
                         GameObject targets = Resources.Load<GameObject>(reLoad + prefebDict[ansSwq[i].ToString().ToUpper()]);
                    
@@ -543,6 +544,7 @@ Time.timeScale=1f;
                         option2[i].transform.Find("player2").gameObject.SetActive(false);
                         option2[i].transform.Find("RawImage").gameObject.SetActive(false);
                         option2[i].transform.Find("incorrect").gameObject.SetActive(false);
+                        option2[i].transform.Find("Text (TMP)").gameObject.SetActive(false);
                         option2[i].GetComponent<Option>().isCorrect = false;
                         GameObject targets = Resources.Load<GameObject>(reLoad + prefebDict[ansSwq[i].ToString().ToUpper()]);
                         Instantiate(targets, new Vector3(option2[i].transform.position.x, option2[i].transform.position.y, 0), targets.transform.rotation);
@@ -592,6 +594,9 @@ Time.timeScale=1f;
         scoretxtfinal2.SetActive(true);
         scoretxtfinal1.GetComponent<TextMeshProUGUI>().text = "Player 1 final score is: " + score1;
         scoretxtfinal2.GetComponent<TextMeshProUGUI>().text = "Player 2 final score is: " + score2;
+        if (int.Parse(lvlno) <6) {
+            endscreen.transform.Find("Reset").gameObject.SetActive(false);
+                    }
 
         for (int i = 0; i < options.Length; i++)
         {
@@ -710,6 +715,7 @@ Time.timeScale=1f;
             {
                 options[i].transform.Find("RawImage").gameObject.SetActive(false);
                 options[i].transform.Find("incorrect").gameObject.SetActive(false);
+                option2[i].transform.Find("Text (TMP)").gameObject.SetActive(true);
                 if (options[i].GetComponent<Option>().isCorrect)
                 {
                     options[i].transform.Find("RawImage").gameObject.SetActive(true);
@@ -729,6 +735,7 @@ Time.timeScale=1f;
             {
                 option2[i].transform.Find("RawImage").gameObject.SetActive(false);
                 option2[i].transform.Find("incorrect").gameObject.SetActive(false);
+                option2[i].transform.Find("Text (TMP)").gameObject.SetActive(true);
                 if (option2[i].GetComponent<Option>().isCorrect)
                 {
                     option2[i].transform.Find("RawImage").gameObject.SetActive(true);
@@ -748,6 +755,7 @@ Time.timeScale=1f;
             {
                 option2[i].transform.Find("RawImage").gameObject.SetActive(false);
                 option2[i].transform.Find("incorrect").gameObject.SetActive(false);
+                option2[i].transform.Find("Text (TMP)").gameObject.SetActive(true);
                 if (option2[i].GetComponent<Option>().isCorrect)
                 {
                     option2[i].transform.Find("RawImage").gameObject.SetActive(true);
