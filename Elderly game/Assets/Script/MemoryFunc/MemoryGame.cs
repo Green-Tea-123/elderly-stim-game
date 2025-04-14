@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
-using static UnityEditor.PlayerSettings;
 
 
 
@@ -597,6 +596,7 @@ Time.timeScale=1f;
         for (int i = 0; i < options.Length; i++)
         {
             options[i].SetActive(false);
+            option2[i].SetActive(false);
         }
     }
     public void showanswer()
@@ -686,7 +686,7 @@ Time.timeScale=1f;
 
     public void correct()
     {
-        if (qnPanel.activeSelf && qntype.Count >0)
+        if (qnPanel.activeInHierarchy && qntype.Count >0)
         {
             for (int i = 0; i < options.Length; i++) {
                 options[i].transform.Find("RawImage").gameObject.SetActive(false);
@@ -694,13 +694,17 @@ Time.timeScale=1f;
                 if (options[i].GetComponent<Option>().isCorrect)
                 {
                     options[i].transform.Find("RawImage").gameObject.SetActive(true);
+                    options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "Correct!!";
+                    option2[i].transform.Find("Text (TMP)").transform.SetAsLastSibling();
                 }
                 else
                 {
                     options[i].transform.Find("incorrect").gameObject.SetActive(true);
+                    options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "Wrong!!";
+                    option2[i].transform.Find("Text (TMP)").transform.SetAsLastSibling();
                 }
             }
-        } else if(qnPanel.activeSelf && qntype.Count <= 0)
+        } else if(qnPanel.activeInHierarchy && qntype.Count <= 0)
         {
             for (int i = 0; i < options.Length; i++)
             {
@@ -710,12 +714,16 @@ Time.timeScale=1f;
                 {
                     options[i].transform.Find("RawImage").gameObject.SetActive(true);
                     options[i].transform.Find("correct").gameObject.SetActive(true);
+                    options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "Correct!!";
+                    option2[i].transform.Find("Text (TMP)").transform.SetAsLastSibling();
                 } else {
                     options[i].transform.Find("incorrect").gameObject.SetActive(true);
+                    options[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "Wrong!!";
+                    option2[i].transform.Find("Text (TMP)").transform.SetAsLastSibling();
                 }
             }
         }
-        else if (qnPanel2.activeSelf && qntype.Count > 0)
+        else if (qnPanel2.activeInHierarchy && qntype.Count > 0)
         {
             for (int i = 0; i < options.Length; i++)
             {
@@ -724,13 +732,17 @@ Time.timeScale=1f;
                 if (option2[i].GetComponent<Option>().isCorrect)
                 {
                     option2[i].transform.Find("RawImage").gameObject.SetActive(true);
+                    option2[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "Correct!!";
+                    option2[i].transform.Find("Text (TMP)").transform.SetAsLastSibling();
                 }
                 else
                 {
                     option2[i].transform.Find("incorrect").gameObject.SetActive(true);
+                    option2[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "Wrong!!";
+                    option2[i].transform.Find("Text (TMP)").transform.SetAsLastSibling();
                 }
             }
-        } else if(qnPanel2.activeSelf && qntype.Count <= 0)
+        } else if(qnPanel2.activeInHierarchy && qntype.Count <= 0)
         {
             for (int i = 0; i < option2.Length; i++)
             {
@@ -739,9 +751,13 @@ Time.timeScale=1f;
                 if (option2[i].GetComponent<Option>().isCorrect)
                 {
                     option2[i].transform.Find("RawImage").gameObject.SetActive(true);
+                    option2[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "Correct!!";
+                    option2[i].transform.Find("Text (TMP)").transform.SetAsLastSibling();
     
             }else {
                 option2[i].transform.Find("incorrect").gameObject.SetActive(true);
+                option2[i].transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "Wrong!!";
+                option2[i].transform.Find("Text (TMP)").transform.SetAsLastSibling();
             }
         }
 

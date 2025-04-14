@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Repeatlvl : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject result;
     public void repeatlvl()
     {
 

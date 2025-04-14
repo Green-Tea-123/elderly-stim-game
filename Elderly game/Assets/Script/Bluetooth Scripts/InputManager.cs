@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
@@ -17,7 +17,9 @@ public class InputManager : MonoBehaviour
     }
 
     void update() {
-
+        if (Input.GetKeyDown(KeyCode.F1)) {
+            SceneManager.LoadScene("Homepage");
+        }
     }
 
     // TODO modify to return controller identity and input
