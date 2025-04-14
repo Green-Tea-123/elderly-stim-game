@@ -33,7 +33,7 @@ public class MemoryGame : MonoBehaviour
     public GameObject qnPanel2;
     public bool qnGenerated = false;
     public bool answerstatus = true;
-    private bool gamestatus = false;
+    private bool gamestatus = true;
     public int score1 = 0;
     public int score2 = 0;
     public int correctAns;
