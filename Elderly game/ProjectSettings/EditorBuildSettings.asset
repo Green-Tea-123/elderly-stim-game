@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/quiz_prototype.unity
     guid: 72816694c793bdc44bb9772ecd6e31b4
   - enabled: 1
-    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast1.unity
-    guid: 8deac6fe19cc1f24dbe7450ca1d88420
-  - enabled: 1
     path: Assets/Scenes/Quizcoverpage.unity
     guid: aabfabe3fcaeddc4282b3f8459572784
   - enabled: 1
@@ -29,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast3.unity
     guid: af18a686ecfa20540b231e115a8f19c1
-  - enabled: 1
-    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast2.unity
-    guid: 18f6779246c0bd949be971b04e238127
   - enabled: 1
     path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast4.unity
     guid: 66cb8004411281e46b71a375bad512cd
@@ -60,7 +54,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast12.unity
     guid: 07cf2f99ac791bc4ca532da62c9f7d97
   - enabled: 1
-    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fastcustomizable.unity
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fastcustomize.unity
     guid: 25b1f8f16395e814c8895649a408ab7f
   - enabled: 1
     path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fast1.unity
@@ -135,7 +129,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_medium12.unity
     guid: 576cca448d26e5449a143fe735975ee9
   - enabled: 1
-    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_mediumcustomizable.unity
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_coop_mediumcustomize.unity
     guid: 0622f1fe980df2d42bdc952066b312b9
   - enabled: 1
     path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium1.unity
@@ -174,10 +168,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Rythm game_medium/Rythmgame_single_medium12.unity
     guid: 3b3ea2ffd54326d408e0feee635a97b7
   - enabled: 1
-    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_mediumcustomizable.unity
+    path: Assets/Scenes/Rythm game_medium/Rythmgame_single_mediumcustomize.unity
     guid: b5019df35af6d7f4184786c418e80ea5
   - enabled: 1
-    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fastcustomizable.unity
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_coop_fastcustomize.unity
     guid: 25536e2159f5aae4dab7584f0bcb9608
   - enabled: 1
     path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow1.unity
@@ -216,7 +210,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slow12.unity
     guid: 8591c2ac25fa3c249b750df099d4b644
   - enabled: 1
-    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slowcustomizable.unity
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_coop_slowcustomize.unity
     guid: ece473a67a3bbc44d9dd7694b84f6760
   - enabled: 1
     path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow1.unity
@@ -255,7 +249,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slow11.unity
     guid: 3c0dc93e51485fc41b126e6d97bfc630
   - enabled: 1
-    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slowcustomizable.unity
+    path: Assets/Scenes/Rythm game_slow/Rythmgame_single_slowcustomize.unity
     guid: f6fc5aab0e618f7498d1a8380a9b71ed
   - enabled: 1
     path: Assets/Scenes/Rythm game_fast/Rythm game_playmode_fast.unity
@@ -341,4 +335,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rythm game_difficulty selection.unity
     guid: 0194a1ad6c72dfb44871b78676ab43a4
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast1.unity
+    guid: 8deac6fe19cc1f24dbe7450ca1d88420
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_fast/Rythmgame_single_fast2.unity
+    guid: 18f6779246c0bd949be971b04e238127
+  - enabled: 1
+    path: Assets/Scenes/Rythm game_medium/Rythm game_playmode_medium.unity
+    guid: d07ad96a9c8f3174eb3f2e7e36c6bd2a
   m_configObjects: {}
