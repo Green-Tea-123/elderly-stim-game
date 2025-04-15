@@ -17,9 +17,7 @@ public class InputManager : MonoBehaviour
     }
 
     void update() {
-        if (Input.GetKeyDown(KeyCode.F1)) {
-            SceneManager.LoadScene("Homepage");
-        }
+
     }
 
     // TODO modify to return controller identity and input

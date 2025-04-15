@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
     {
 
         totalnotes = this.CountNoChild(tile);
+        
     }
 
     // Update is called once per frame
