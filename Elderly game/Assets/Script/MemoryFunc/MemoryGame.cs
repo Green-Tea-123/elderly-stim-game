@@ -399,6 +399,7 @@ Time.timeScale=1f;
 
                 case 2:
                     qnPanel2.SetActive(true);
+                    qnNew = lvlset[0].ToString();
                     if (qnNew.Length < 4)
                     {
                         while (qnNew.Length < req)
@@ -421,7 +422,6 @@ Time.timeScale=1f;
                     }
                     else
                     {
-                        qnNew = lvlset[0].ToString();
                         while (qnNew.Length< req)
                         {
                             if (appearing.Count < req)
@@ -483,6 +483,7 @@ Time.timeScale=1f;
 
                 case 3:
                     qnPanel2.SetActive(true);
+                    qnNew = lvlset[lvlset.Length-1].ToString();
                     if (qnNew.Length < 4)
                     {
                         while (qnNew.Length< req)
@@ -504,7 +505,7 @@ Time.timeScale=1f;
                     }
                     else
                     {
-                        qnNew = lvlset[0].ToString();
+                 
                         while (qnNew.Length< 4)
                         {
 
