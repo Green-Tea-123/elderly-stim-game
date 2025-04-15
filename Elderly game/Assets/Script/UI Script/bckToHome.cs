@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class bckToHome : MonoBehaviour
 {
+    public static bckToHome instance;
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null) {
+            instance = this;
+        } else if (instance != this) {
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(gameObject);
     }
 
